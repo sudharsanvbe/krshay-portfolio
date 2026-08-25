@@ -1,0 +1,1796 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#faf8f3">
+    <title>Interests — Krshay Venkatesan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* =========================================================
+   INTERESTS — LIGHT THEME
+   Scoped to .interests-hero and .interests-content
+   Signature: four coloured "pillars" (Sport / Books / Travel / Music)
+   echoing the "Systems I live inside" motif from the homepage.
+   Dark hero band stays as the site's cinematic entry point —
+   the content well below switches to a warm, editorial light theme.
+========================================================= */
+
+    .interests-hero,
+    .interests-content {
+        --int-bg: #ffffff;
+        --int-surface: #ffffff;
+        --int-surface-2: #f3efe4;
+        --int-border: rgba(20, 18, 14, 0.09);
+        --int-border-strong: rgba(20, 18, 14, 0.18);
+
+        --int-text: #17150f;
+        --int-text-soft: rgba(23, 21, 15, 0.68);
+        --int-text-muted: rgba(23, 21, 15, 0.46);
+
+        --int-sport: #d13f24;
+        --int-sport-soft: rgba(209, 63, 36, 0.10);
+        --int-gold: #ab7a24;
+        --int-gold-soft: rgba(171, 122, 36, 0.14);
+
+        --research-paper: #f7faff;
+
+        --int-books: #2952c8;
+        --int-books-soft: rgba(41, 82, 200, 0.09);
+
+        --int-travel: #1c8f5c;
+        --int-travel-soft: rgba(28, 143, 92, 0.10);
+
+        --int-music: #6a48c9;
+        --int-music-soft: rgba(106, 72, 201, 0.10);
+                --research-grid: rgba(20, 88, 170, .095);
+        --research-line: rgba(7, 91, 211, .18);
+    }
+
+    /* ---------------------------------------------------------
+       HERO — keeps the site's dark cinematic band; only the
+       pillar strip lives in this scope
+    --------------------------------------------------------- */
+
+    .interests-hero {
+        position: relative;
+        
+    }
+
+    .interests-hero .pillar-strip {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin: 26px auto 0;
+        max-width: 340px;
+    }
+
+    .interests-hero .pillar-strip span {
+        flex: 1;
+        height: 3px;
+        border-radius: 3px;
+        opacity: .9;
+    }
+
+    .interests-hero .pillar-strip span:nth-child(1) { background: #ff6b45; }
+    .interests-hero .pillar-strip span:nth-child(2) { background: #5c86ff; }
+    .interests-hero .pillar-strip span:nth-child(3) { background: #37cf8f; }
+    .interests-hero .pillar-strip span:nth-child(4) { background: #a988ff; }
+
+    /* =========================================================
+   MAIN CONTENT WRAPPER — light, warm-paper editorial well
+========================================================= */
+
+    .interests-content {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        background: var(--int-bg);
+        color: var(--int-text);
+
+        padding: 110px 0 130px;
+    }
+
+    /* soft colour washes, tuned down for a light surface */
+    .interests-content::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+
+        overflow: hidden;
+
+        background-color: var(--research-paper);
+
+        background-image:
+            linear-gradient(var(--research-grid) 1px,
+                transparent 1px),
+            linear-gradient(90deg,
+                var(--research-grid) 1px,
+                transparent 1px);
+
+        background-size:
+            40px 40px;
+
+        perspective: 1600px;
+    }
+
+    /* fine paper grain — trend detail, keeps the light theme from feeling flat/sterile */
+    .interests-content::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.5;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .interests-content .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* =========================================================
+   INTRO
+========================================================= */
+
+    .interests-content .int-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.6fr);
+        gap: 60px;
+        align-items: end;
+
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+
+        border-bottom: 1px solid var(--int-border);
+    }
+
+    .interests-content .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+
+        margin-bottom: 16px;
+
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .18em;
+
+        color: var(--int-sport);
+    }
+
+    .interests-content .eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1px;
+        background: var(--int-sport);
+    }
+
+    .interests-content .int-intro h2 {
+        margin: 0;
+        color: var(--int-text);
+        font-size: clamp(42px, 6vw, 78px);
+        line-height: .95;
+        letter-spacing: -.045em;
+        font-weight: 800;
+    }
+
+    .interests-content .int-intro p {
+        margin: 0;
+        color: var(--int-text-soft);
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    /* =========================================================
+   PILLAR JUMP NAV — sticky-feeling pill row, trend: in-page nav
+========================================================= */
+
+    .interests-content .pillar-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+
+    .interests-content .pillar-jump a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--int-border-strong);
+        background: var(--int-surface);
+        color: var(--int-text-soft);
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: .02em;
+        text-decoration: none;
+        transition: all .25s ease;
+    }
+
+    .interests-content .pillar-jump a[data-pillar="sport"].active,
+    .interests-content .pillar-jump a[data-pillar="sport"]:hover { background: var(--int-sport-soft); border-color: var(--int-sport); color: var(--int-sport); }
+    .interests-content .pillar-jump a[data-pillar="books"].active,
+    .interests-content .pillar-jump a[data-pillar="books"]:hover { background: var(--int-books-soft); border-color: var(--int-books); color: var(--int-books); }
+    .interests-content .pillar-jump a[data-pillar="travel"].active,
+    .interests-content .pillar-jump a[data-pillar="travel"]:hover { background: var(--int-travel-soft); border-color: var(--int-travel); color: var(--int-travel); }
+    .interests-content .pillar-jump a[data-pillar="music"].active,
+    .interests-content .pillar-jump a[data-pillar="music"]:hover { background: var(--int-music-soft); border-color: var(--int-music); color: var(--int-music); }
+
+    /* pillar preview row — 4 circular tiles, matches homepage motif */
+
+    .interests-content .pillar-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+
+        margin-bottom: 60px;
+    }
+
+    .interests-content .pillar-tile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+        padding: 26px 16px;
+
+        border: 1px solid var(--int-border);
+        border-radius: 20px;
+
+        background: var(--int-surface);
+        box-shadow: 0 1px 2px rgba(23, 21, 15, 0.04);
+
+        text-decoration: none;
+        color: var(--int-text);
+
+        text-align: center;
+
+        transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .interests-content .pillar-tile:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 34px -18px rgba(23, 21, 15, 0.22);
+    }
+
+    .interests-content .pillar-tile .pillar-ring {
+        display: grid;
+        place-items: center;
+
+        width: 58px;
+        height: 58px;
+
+        border-radius: 50%;
+
+        font-size: 22px;
+    }
+
+    .interests-content .pillar-tile--sport:hover { border-color: var(--int-sport); }
+    .interests-content .pillar-tile--books:hover { border-color: var(--int-books); }
+    .interests-content .pillar-tile--travel:hover { border-color: var(--int-travel); }
+    .interests-content .pillar-tile--music:hover { border-color: var(--int-music); }
+
+    .interests-content .pillar-tile--sport .pillar-ring { background: var(--int-sport-soft); color: var(--int-sport); }
+    .interests-content .pillar-tile--books .pillar-ring { background: var(--int-books-soft); color: var(--int-books); }
+    .interests-content .pillar-tile--travel .pillar-ring { background: var(--int-travel-soft); color: var(--int-travel); }
+    .interests-content .pillar-tile--music .pillar-ring { background: var(--int-music-soft); color: var(--int-music); }
+
+    .interests-content .pillar-tile strong {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .04em;
+    }
+
+    .interests-content .pillar-tile span {
+        font-size: 11px;
+        color: var(--int-text-muted);
+    }
+
+    /* =========================================================
+   TOPIC BLOCK — shared shell for all four sections
+========================================================= */
+
+    .interests-content .topic-block {
+        margin-top: 26px;
+        padding: 44px;
+
+        background: var(--int-surface);
+        border: 1px solid var(--int-border);
+        border-radius: 28px;
+        box-shadow: 0 1px 2px rgba(23, 21, 15, 0.04);
+
+        scroll-margin-top: 110px;
+    }
+
+    .interests-content .topic-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+
+        margin-bottom: 34px;
+    }
+
+    .interests-content .topic-head .eyebrow { margin-bottom: 10px; }
+
+    .interests-content .topic-head h3 {
+        margin: 0;
+        font-size: clamp(24px, 3vw, 38px);
+        letter-spacing: -.04em;
+        color: var(--int-text);
+    }
+
+    .interests-content .topic-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        padding: 9px 15px;
+
+        border-radius: 999px;
+        border: 1px solid var(--int-border-strong);
+
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .04em;
+        white-space: nowrap;
+    }
+
+    .topic-block--sport .eyebrow, .topic-block--sport .eyebrow::before { color: var(--int-sport); background: var(--int-sport); }
+    .topic-block--books .eyebrow, .topic-block--books .eyebrow::before { color: var(--int-books); background: var(--int-books); }
+    .topic-block--travel .eyebrow, .topic-block--travel .eyebrow::before { color: var(--int-travel); background: var(--int-travel); }
+    .topic-block--music .eyebrow, .topic-block--music .eyebrow::before { color: var(--int-music); background: var(--int-music); }
+
+    .topic-block--sport .topic-tag { color: var(--int-sport); background: var(--int-sport-soft); border-color: transparent; }
+    .topic-block--books .topic-tag { color: var(--int-books); background: var(--int-books-soft); border-color: transparent; }
+    .topic-block--travel .topic-tag { color: var(--int-travel); background: var(--int-travel-soft); border-color: transparent; }
+    .topic-block--music .topic-tag { color: var(--int-music); background: var(--int-music-soft); border-color: transparent; }
+
+    /* =========================================================
+   SPORT — stats + timeline + document vault
+========================================================= */
+
+    .interests-content .stat-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+
+        margin-bottom: 34px;
+    }
+
+    .interests-content .stat-tile {
+        padding: 20px 22px;
+        background: var(--int-surface-2);
+        border: 1px solid var(--int-border);
+        border-radius: 16px;
+    }
+
+    .interests-content .stat-tile strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 30px;
+        letter-spacing: -.04em;
+        color: var(--int-text);
+    }
+
+    .interests-content .stat-tile span {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .sport-split {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 30px;
+
+        margin-bottom: 34px;
+    }
+
+    .interests-content .sport-note {
+        padding: 24px;
+        background: var(--int-surface-2);
+        border: 1px solid var(--int-border);
+        border-radius: 18px;
+    }
+
+    .interests-content .sport-note h4 {
+        margin: 0 0 10px;
+        font-size: 15px;
+        color: var(--int-text);
+    }
+
+    .interests-content .sport-note p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.75;
+        color: var(--int-text-soft);
+    }
+
+    .interests-content .track-list {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--int-border);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .interests-content .track-row {
+        display: grid;
+        grid-template-columns: 60px 1fr auto;
+        align-items: center;
+        gap: 14px;
+
+        padding: 13px 16px;
+        background: var(--int-surface);
+    }
+
+    .interests-content .track-row:nth-child(even) {
+        background: var(--int-surface-2);
+    }
+
+    .interests-content .track-row + .track-row {
+        border-top: 1px solid var(--int-border);
+    }
+
+    .interests-content .track-year {
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .track-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--int-text);
+    }
+
+    .interests-content .track-name small {
+        display: block;
+        margin-top: 2px;
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .medal {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 11px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .04em;
+        white-space: nowrap;
+    }
+
+    .interests-content .medal--gold { background: var(--int-gold-soft); color: var(--int-gold); }
+    .interests-content .medal--silver { background: rgba(90, 100, 120, .12); color: #4d5566; }
+    .interests-content .medal--intl { background: var(--int-sport-soft); color: var(--int-sport); }
+    .interests-content .medal--belt { background: rgba(23, 21, 15, .07); color: var(--int-text-soft); }
+
+    /* document vault */
+
+    .interests-content .vault {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--int-border);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .interests-content .vault-row {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr) 130px auto;
+        align-items: center;
+        column-gap: 16px;
+
+        padding: 14px 18px;
+        background: var(--int-surface);
+
+        text-decoration: none;
+        transition: background .25s ease;
+    }
+
+    .interests-content .vault-row:nth-child(even) {
+        background: var(--int-surface-2);
+    }
+
+    .interests-content .vault-row + .vault-row {
+        border-top: 1px solid var(--int-border);
+    }
+
+    .interests-content .vault-row:hover {
+        background: var(--int-sport-soft);
+    }
+
+    .interests-content .vault-icon {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        font-size: 10px;
+        font-weight: 900;
+        background: var(--int-sport-soft);
+        color: var(--int-sport);
+    }
+
+    .interests-content .vault-icon--img {
+        background: var(--int-gold-soft);
+        color: var(--int-gold);
+    }
+
+    .interests-content .vault-name strong {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--int-text);
+    }
+
+    .interests-content .vault-name span {
+        display: block;
+        margin-top: 3px;
+        font-size: 10.5px;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .vault-meta {
+        text-align: right;
+        font-size: 11px;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .vault-meta em {
+        display: block;
+        margin-top: 3px;
+        font-style: normal;
+    }
+
+    .interests-content .vault-arrow {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        border: 1px solid var(--int-border-strong);
+        color: var(--int-text);
+        font-size: 12px;
+        transition: transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+    }
+
+    .interests-content .vault-row:hover .vault-arrow {
+        transform: translate(2px, -2px);
+        background: var(--int-sport);
+        border-color: var(--int-sport);
+        color: #fff;
+    }
+
+    /* =========================================================
+   BOOKS — genre rails + featured pick (notebook-page treatment)
+========================================================= */
+
+    .interests-content .genre-rail {
+        margin-bottom: 26px;
+    }
+
+    .interests-content .genre-rail:last-child {
+        margin-bottom: 0;
+    }
+
+    .interests-content .genre-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+
+        margin-bottom: 14px;
+    }
+
+    .interests-content .genre-head h4 {
+        margin: 0;
+        font-size: 15px;
+        color: var(--int-text);
+    }
+
+    .interests-content .genre-head span {
+        font-size: 11px;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .spine-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .interests-content .spine {
+        position: relative;
+        padding: 18px 14px;
+        min-height: 128px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        border-radius: 12px;
+        border: 1px solid var(--int-border);
+
+        background: var(--int-surface-2);
+
+        overflow: hidden;
+
+        transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .interests-content .spine::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0;
+        width: 4px; height: 100%;
+        background: var(--int-books);
+        opacity: .85;
+    }
+
+    .interests-content .spine:hover {
+        transform: translateY(-5px);
+        border-color: var(--int-books);
+        box-shadow: 0 16px 30px -20px rgba(41, 82, 200, .35);
+    }
+
+    .interests-content .spine strong {
+        display: block;
+        font-size: 12.5px;
+        line-height: 1.3;
+        color: var(--int-text);
+        margin-bottom: 6px;
+    }
+
+    .interests-content .spine em {
+        font-style: normal;
+        font-size: 10.5px;
+        color: var(--int-text-muted);
+    }
+
+    /* featured pick — styled as a page torn from the field notebook,
+       nodding to the reference "Books that shaped my thinking" mockup */
+
+    .interests-content .featured-pick {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 210px 1fr;
+        gap: 30px;
+
+        padding: 28px;
+        border-radius: 20px;
+        background:
+            repeating-linear-gradient(
+                var(--int-surface) 0px, var(--int-surface) 27px,
+                var(--int-border) 27px, var(--int-border) 28px
+            );
+        border: 1px solid var(--int-border);
+        box-shadow: 0 1px 2px rgba(23, 21, 15, 0.04);
+    }
+
+    .interests-content .featured-cover {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        min-height: 210px;
+        padding: 18px;
+        border-radius: 12px;
+
+        background: linear-gradient(160deg, var(--int-books), #17307a);
+        border: 1px solid var(--int-border-strong);
+        box-shadow: 6px 6px 0 var(--int-border-strong);
+    }
+
+    .interests-content .featured-cover span {
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: .12em;
+        color: rgba(255,255,255,.65);
+    }
+
+    .interests-content .featured-cover strong {
+        display: block;
+        margin-top: 10px;
+        font-size: 22px;
+        line-height: 1.15;
+        color: #fff;
+    }
+
+    .interests-content .featured-cover em {
+        display: block;
+        margin-top: 12px;
+        font-style: normal;
+        font-size: 11px;
+        color: rgba(255,255,255,.7);
+    }
+
+    .interests-content .featured-copy h4 {
+        margin: 0 0 10px;
+        font-size: 12px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--int-books);
+    }
+
+    .interests-content .featured-copy p {
+        margin: 0 0 16px;
+        font-size: 13.5px;
+        line-height: 1.75;
+        color: var(--int-text-soft);
+    }
+
+    .interests-content .featured-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .interests-content .featured-list li {
+        position: relative;
+        padding-left: 18px;
+        font-size: 12.5px;
+        line-height: 1.6;
+        color: var(--int-text-soft);
+    }
+
+    .interests-content .featured-list li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 8px;
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: var(--int-books);
+    }
+
+    /* =========================================================
+   TRAVEL — passport route strip + refreshed narrative
+========================================================= */
+
+    .interests-content .travel-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-bottom: 30px;
+    }
+
+    .interests-content .travel-stat {
+        padding: 20px 22px;
+        background: var(--int-surface-2);
+        border: 1px solid var(--int-border);
+        border-radius: 16px;
+    }
+
+    .interests-content .travel-stat strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 22px;
+        letter-spacing: -.03em;
+        color: var(--int-travel);
+    }
+
+    .interests-content .travel-stat span {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .route-line {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+
+        margin-bottom: 30px;
+        padding-top: 20px;
+    }
+
+    .interests-content .route-line::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 4%;
+        right: 4%;
+        height: 1px;
+        background: repeating-linear-gradient(90deg, var(--int-travel) 0 8px, transparent 8px 16px);
+        opacity: .6;
+    }
+
+    .interests-content .stamp {
+        position: relative;
+        padding: 20px 16px 16px;
+
+        border: 1px dashed var(--int-border-strong);
+        border-radius: 14px;
+
+        background: var(--int-surface);
+
+        text-align: center;
+        transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .interests-content .stamp:hover {
+        transform: translateY(-4px) rotate(-1deg);
+        border-color: var(--int-travel);
+    }
+
+    .interests-content .stamp::before {
+        content: "";
+        position: absolute;
+        top: -13px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 9px; height: 9px;
+        border-radius: 50%;
+        background: var(--int-travel);
+        box-shadow: 0 0 0 4px var(--int-bg);
+    }
+
+    .interests-content .stamp strong {
+        display: block;
+        font-size: 13px;
+        color: var(--int-text);
+        margin-bottom: 4px;
+    }
+
+    .interests-content .stamp span {
+        display: block;
+        font-size: 10.5px;
+        color: var(--int-text-muted);
+        line-height: 1.5;
+    }
+
+    .interests-content .stamp.is-next {
+        border-style: solid;
+        border-color: var(--int-travel);
+        background: var(--int-travel-soft);
+    }
+
+    .interests-content .travel-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 30px;
+    }
+
+    .interests-content .travel-note {
+        padding: 24px;
+        border-radius: 18px;
+        background: var(--int-surface-2);
+        border: 1px solid var(--int-border);
+    }
+
+    .interests-content .travel-note h4 {
+        margin: 0 0 10px;
+        font-size: 15px;
+        color: var(--int-text);
+    }
+
+    .interests-content .travel-note p {
+        margin: 0 0 12px;
+        font-size: 13px;
+        line-height: 1.75;
+        color: var(--int-text-soft);
+    }
+
+    .interests-content .travel-note p:last-child { margin-bottom: 0; }
+
+    .interests-content .travel-wishlist {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 24px;
+        border-radius: 18px;
+        background: var(--int-surface);
+        border: 1px solid var(--int-border);
+    }
+
+    .interests-content .travel-wishlist h4 {
+        margin: 0 0 4px;
+        font-size: 15px;
+        color: var(--int-text);
+    }
+
+    .interests-content .wish-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-top: 1px dashed var(--int-border);
+        font-size: 12.5px;
+    }
+
+    .interests-content .wish-row:first-of-type { border-top: none; padding-top: 0; }
+
+    .interests-content .wish-row strong {
+        font-weight: 700;
+        color: var(--int-text);
+    }
+
+    .interests-content .wish-row span {
+        color: var(--int-text-muted);
+        font-size: 11px;
+    }
+
+    /* =========================================================
+   MUSIC — waveform mood board
+========================================================= */
+
+    .interests-content .mood-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+
+        margin-bottom: 26px;
+    }
+
+    .interests-content .mood-card {
+        padding: 22px;
+        border-radius: 16px;
+        background: var(--int-surface-2);
+        border: 1px solid var(--int-border);
+
+        transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .interests-content .mood-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--int-music);
+        box-shadow: 0 16px 30px -20px rgba(106, 72, 201, .35);
+    }
+
+    .interests-content .wave {
+        display: flex;
+        align-items: flex-end;
+        gap: 3px;
+        height: 40px;
+        margin-bottom: 16px;
+    }
+
+    .interests-content .wave span {
+        flex: 1;
+        border-radius: 3px;
+        background: var(--int-music);
+        opacity: .6;
+        transform: scaleY(.3);
+        transition: transform .6s cubic-bezier(.2,.8,.2,1);
+        transform-origin: bottom;
+    }
+
+    .interests-content .reveal.show .wave span {
+        transform: scaleY(var(--h, .5));
+    }
+
+    .interests-content .mood-card h4 {
+        margin: 0 0 6px;
+        font-size: 14px;
+        color: var(--int-text);
+    }
+
+    .interests-content .mood-card p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.7;
+        color: var(--int-text-muted);
+    }
+
+    .interests-content .mood-tag {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: var(--int-music-soft);
+        color: var(--int-music);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .04em;
+    }
+
+    /* =========================================================
+   REVEAL ANIMATION (shared)
+========================================================= */
+
+    .interests-content .reveal,
+    .interests-hero .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .interests-content .reveal.show,
+    .interests-hero .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+    @media (max-width: 1000px) {
+
+        .interests-content .int-intro {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .interests-content .pillar-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .interests-content .stat-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .interests-content .sport-split {
+            grid-template-columns: 1fr;
+        }
+
+        .interests-content .spine-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .interests-content .featured-pick {
+            grid-template-columns: 1fr;
+        }
+
+        .interests-content .featured-cover {
+            min-height: 160px;
+        }
+
+        .interests-content .route-line {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .interests-content .travel-stats {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .interests-content .travel-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .interests-content .mood-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 680px) {
+
+        .interests-content {
+            padding: 80px 0 90px;
+        }
+
+        .interests-content .topic-block {
+            padding: 26px 18px;
+            border-radius: 20px;
+        }
+
+        .interests-content .topic-head {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .interests-content .vault-row {
+            grid-template-columns: 36px minmax(0,1fr) auto;
+        }
+
+        .interests-content .vault-meta {
+            display: none;
+        }
+
+        .interests-content .spine-row {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .interests-content .mood-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .interests-content .route-line {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .interests-content .stat-row {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .interests-content .travel-stats {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .interests-content *, .interests-content *::before, .interests-content *::after,
+        .interests-hero *, .interests-hero *::before, .interests-hero *::after {
+            animation-duration: .01ms !important;
+            transition-duration: .01ms !important;
+        }
+        .interests-content .reveal, .interests-hero .reveal {
+            opacity: 1;
+            transform: none;
+        }
+    }
+</style>
+<body>
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <!-- BRAND -->
+            <a class="brand" href="index.html" aria-label="Krshay Venkatesan — Home" style="margin-bottom: 10px;">
+                <span class="brand-mark">K</span>
+                <span class="brand-name">
+                </span>
+                <br>
+            </a>
+            <!-- NAVIGATION -->
+            <nav class="main-nav" aria-label="Primary navigation">
+
+                <a href="index.html">
+                    <span>HOME</span>
+                </a>
+
+                <a href="research.html">
+                    <span>RESEARCH</span>
+                </a>
+
+                <a href="projects.html">
+                    <span>PROJECT</span>
+                </a>
+
+                <a href="internships.html">
+                    <span>INTERNSHIPS</span>
+                </a>
+
+                <a href="academics.html">
+                    <span>ACADEMIC</span>
+                </a>
+
+                <a href="impact.html">
+                    <span>IMPACT</span>
+                </a>
+
+                <a href="awards.html">
+                    <span>AWARDS</span>
+                </a>
+
+                <a href="interests.html" class="active">
+                    <span>INTERESTS</span>
+                </a>
+
+            </nav>
+
+            <!-- MOBILE MENU -->
+            <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" onclick="
+                    document.body.classList.toggle('menu-open');
+                    this.setAttribute(
+                        'aria-expanded',
+                        document.body.classList.contains('menu-open')
+                    );
+                ">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+    <main>
+        <section class="page-hero interests-hero">
+            <div class="container" style="max-width: 900px; text-align: center; margin-top: -25px;">
+                <div class="page-kicker">08 · Interests</div>
+                <h1>Off<br>the clock.</h1>
+                <br>
+                <p style="max-width: 600px; margin: 0 auto;">Four things that run in the background while the engineering does the talking — a track record, a shelf of
+                    mentors on paper, a passport that's only just getting started, and whatever's playing before the
+                    start line.</p>
+                <div class="pillar-strip" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <br>
+                <a class="btn back" href="index.html">← Back to foundation</a>
+            </div>
+        </section>
+        <section class="page-content interests-content">
+            <div class="container">
+
+                <div class="int-intro reveal">
+                    <div>
+                        <span class="eyebrow">INTERESTS</span>
+                        <h2>Four things,<br>one curiosity.</h2>
+                    </div>
+                    <p>
+                        Sport built the discipline, books built the questions, travel is where the next
+                        lessons live, and music is what gets the head quiet before either one starts.
+                        Jump to whichever one you're curious about.
+                    </p>
+                </div>
+
+                <!-- =========================================
+             IN-PAGE PILLAR NAV
+        ========================================== -->
+
+                <nav class="pillar-jump reveal" aria-label="Jump to a topic">
+                    <a href="#int-sport" data-pillar="sport" class="active">🏃 Sport</a>
+                    <a href="#int-books" data-pillar="books">📖 Books</a>
+                    <a href="#int-travel" data-pillar="travel">🧭 Travel</a>
+                    <a href="#int-music" data-pillar="music">🎧 Music</a>
+                </nav>
+
+                <!-- =========================================
+             PILLAR PREVIEW ROW
+        ========================================== -->
+
+                <div class="pillar-row reveal">
+
+                    <a href="#int-sport" class="pillar-tile pillar-tile--sport">
+                        <span class="pillar-ring">🏃</span>
+                        <strong>SPORT</strong>
+                        <span>Track, cricket & karate</span>
+                    </a>
+
+                    <a href="#int-books" class="pillar-tile pillar-tile--books">
+                        <span class="pillar-ring">📖</span>
+                        <strong>BOOKS</strong>
+                        <span>Mentors on paper</span>
+                    </a>
+
+                    <a href="#int-travel" class="pillar-tile pillar-tile--travel">
+                        <span class="pillar-ring">🧭</span>
+                        <strong>TRAVEL</strong>
+                        <span>Where the meets take me</span>
+                    </a>
+
+                    <a href="#int-music" class="pillar-tile pillar-tile--music">
+                        <span class="pillar-ring">🎧</span>
+                        <strong>MUSIC</strong>
+                        <span>The pre-race playlist</span>
+                    </a>
+
+                </div>
+
+
+                <!-- =========================================
+             SPORT
+        ========================================== -->
+
+                <div class="topic-block topic-block--sport reveal" id="int-sport">
+
+                    <div class="topic-head">
+                        <div>
+                            <span class="eyebrow">01 · SPORT</span>
+                            <h3>Cricket, the track & a black belt</h3>
+                        </div>
+                        <span class="topic-tag">8 verified results</span>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-tile">
+                            <strong data-count="2">0</strong>
+                            <span>Gold medals</span>
+                        </div>
+                        <div class="stat-tile">
+                            <strong data-count="1">0</strong>
+                            <span>Silver medal</span>
+                        </div>
+                        <div class="stat-tile">
+                            <strong data-count="1">0</strong>
+                            <span>International meet</span>
+                        </div>
+                        <div class="stat-tile">
+                            <strong data-count="1">0</strong>
+                            <span>Black belt earned</span>
+                        </div>
+                    </div>
+
+                    <div class="sport-split">
+
+                        <div class="track-list">
+
+                            <div class="track-row">
+                                <span class="track-year">2024</span>
+                                <div class="track-name">
+                                    ISF World Schools Championship
+                                    <small>Manama, Bahrain</small>
+                                </div>
+                                <span class="medal medal--intl">International</span>
+                            </div>
+
+                            <div class="track-row">
+                                <span class="track-year">2024</span>
+                                <div class="track-name">
+                                    ISSO 3000m
+                                    <small>School Sports Organisation</small>
+                                </div>
+                                <span class="medal medal--belt">Finalist</span>
+                            </div>
+
+                            <div class="track-row">
+                                <span class="track-year">2024</span>
+                                <div class="track-name">
+                                    SGFI Nationals
+                                    <small>School Games Federation of India</small>
+                                </div>
+                                <span class="medal medal--belt">National</span>
+                            </div>
+
+                            <div class="track-row">
+                                <span class="track-year">2025</span>
+                                <div class="track-name">
+                                    ISSO 800m
+                                    <small>School Sports Organisation</small>
+                                </div>
+                                <span class="medal medal--silver">Silver</span>
+                            </div>
+
+                            <div class="track-row">
+                                <span class="track-year">2025</span>
+                                <div class="track-name">
+                                    ISSO 1500m
+                                    <small>School Sports Organisation</small>
+                                </div>
+                                <span class="medal medal--gold">Gold</span>
+                            </div>
+
+                            <div class="track-row">
+                                <span class="track-year">2025</span>
+                                <div class="track-name">
+                                    ISSO 3000m
+                                    <small>School Sports Organisation</small>
+                                </div>
+                                <span class="medal medal--gold">Gold</span>
+                            </div>
+
+                            <div class="track-row">
+                                <span class="track-year">2025</span>
+                                <div class="track-name">
+                                    SGFI Nationals
+                                    <small>School Games Federation of India</small>
+                                </div>
+                                <span class="medal medal--belt">National</span>
+                            </div>
+
+                            <div class="track-row">
+                                <span class="track-year">—</span>
+                                <div class="track-name">
+                                    Karate
+                                    <small>Black belt certification</small>
+                                </div>
+                                <span class="medal medal--belt">Black belt</span>
+                            </div>
+
+                        </div>
+
+                        <div class="sport-note">
+                            <h4>Why the bat, the track and the dojo</h4>
+                            <p>
+                                Cricket is where the interest in motion started — the wind-up, the release,
+                                the split-second read of a length. Middle-distance running turned that
+                                instinct into a measurable habit: pacing, breath, recovery. Karate added
+                                the discipline underneath both — the black belt didn't come from talent,
+                                it came from showing up on the days motivation didn't.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="vault">
+
+                        <a class="vault-row" href="documents/Athletics-2024-ISF%20Bahrain.pdf" target="_blank">
+                            <span class="vault-icon">PDF</span>
+                            <div class="vault-name">
+                                <strong>Athletics-2024-ISF Bahrain</strong>
+                                <span>ISF World Schools Championship</span>
+                            </div>
+                            <div class="vault-meta">378 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                        <a class="vault-row" href="documents/Athletics-2024-ISSO-3000m.pdf" target="_blank">
+                            <span class="vault-icon">PDF</span>
+                            <div class="vault-name">
+                                <strong>Athletics-2024-ISSO-3000m</strong>
+                                <span>ISSO result</span>
+                            </div>
+                            <div class="vault-meta">334 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                        <a class="vault-row" href="documents/Athletics-2024-Nationals-SGFI.jpeg" target="_blank">
+                            <span class="vault-icon vault-icon--img">IMG</span>
+                            <div class="vault-name">
+                                <strong>Athletics-2024-Nationals-SGFI</strong>
+                                <span>SGFI Nationals result</span>
+                            </div>
+                            <div class="vault-meta">144 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                        <a class="vault-row" href="documents/Athletics-2025-ISSO-800m-Silver.pdf" target="_blank">
+                            <span class="vault-icon">PDF</span>
+                            <div class="vault-name">
+                                <strong>Athletics-2025-ISSO-800m-Silver</strong>
+                                <span>ISSO 800m — Silver</span>
+                            </div>
+                            <div class="vault-meta">1,157 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                        <a class="vault-row" href="documents/Athletics-2025-ISSO-1500m-Gold.pdf" target="_blank">
+                            <span class="vault-icon">PDF</span>
+                            <div class="vault-name">
+                                <strong>Athletics-2025-ISSO-1500m-Gold</strong>
+                                <span>ISSO 1500m — Gold</span>
+                            </div>
+                            <div class="vault-meta">1,157 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                        <a class="vault-row" href="documents/Athletics-2025-ISSO-3000m-Gold.pdf" target="_blank">
+                            <span class="vault-icon">PDF</span>
+                            <div class="vault-name">
+                                <strong>Athletics-2025-ISSO-3000m-Gold</strong>
+                                <span>ISSO 3000m — Gold</span>
+                            </div>
+                            <div class="vault-meta">1,157 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                        <a class="vault-row" href="documents/Athletics-2025-Nationals-SGFI.jpg" target="_blank">
+                            <span class="vault-icon vault-icon--img">IMG</span>
+                            <div class="vault-name">
+                                <strong>Athletics-2025-Nationals-SGFI</strong>
+                                <span>SGFI Nationals result</span>
+                            </div>
+                            <div class="vault-meta">187 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                        <a class="vault-row" href="documents/Karate-Black-Belt-Certificate.jpg" target="_blank">
+                            <span class="vault-icon vault-icon--img">IMG</span>
+                            <div class="vault-name">
+                                <strong>Karate-Black-Belt-Certificate</strong>
+                                <span>Certification</span>
+                            </div>
+                            <div class="vault-meta">392 KB<em>Jul 26, 2026</em></div>
+                            <span class="vault-arrow">↗</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+             BOOKS
+        ========================================== -->
+
+                <div class="topic-block topic-block--books reveal" id="int-books">
+
+                    <div class="topic-head">
+                        <div>
+                            <span class="eyebrow">02 · BOOKS</span>
+                            <h3>Mentors that travel in a backpack</h3>
+                        </div>
+                        <span class="topic-tag">3 genres</span>
+                    </div>
+
+                    <div class="genre-rail">
+                        <div class="genre-head">
+                            <h4>Mystery</h4>
+                            <span>Learning to ask better questions</span>
+                        </div>
+                        <div class="spine-row">
+                            <div class="spine"><strong>The Da Vinci Code</strong><em>Dan Brown</em></div>
+                            <div class="spine"><strong>The Hunt for Red October</strong><em>Tom Clancy</em></div>
+                            <div class="spine"><strong>Sherlock Holmes</strong><em>Arthur Conan Doyle</em></div>
+                            <div class="spine"><strong>Murder on the Orient Express</strong><em>Agatha Christie</em></div>
+                        </div>
+                    </div>
+
+                    <div class="genre-rail">
+                        <div class="genre-head">
+                            <h4>World Wars</h4>
+                            <span>Understanding strategy under uncertainty</span>
+                        </div>
+                        <div class="spine-row">
+                            <div class="spine"><strong>The Rise and Fall of the Third Reich</strong><em>William L. Shirer</em></div>
+                            <div class="spine"><strong>Band of Brothers</strong><em>Stephen E. Ambrose</em></div>
+                            <div class="spine"><strong>The Second World War</strong><em>Antony Beevor</em></div>
+                            <div class="spine"><strong>Churchill: A Life</strong><em>Martin Gilbert</em></div>
+                        </div>
+                    </div>
+
+                    <div class="genre-rail">
+                        <div class="genre-head">
+                            <h4>Sports biographies</h4>
+                            <span>Studying the habits behind excellence</span>
+                        </div>
+                        <div class="spine-row">
+                            <div class="spine"><strong>Playing It My Way</strong><em>Sachin Tendulkar</em></div>
+                            <div class="spine"><strong>No Spin</strong><em>Shane Warne</em></div>
+                            <div class="spine"><strong>The Test of My Life</strong><em>Yuvraj Singh</em></div>
+                            <div class="spine"><strong>MS Dhoni: The Untold Story</strong><em>Unauthorised biography</em></div>
+                        </div>
+                    </div>
+
+                    <div class="featured-pick">
+
+                        <div class="featured-cover">
+                            <span>MYSTERY · FEATURED PICK</span>
+                            <strong>The Hunt for Red October</strong>
+                            <em>Tom Clancy</em>
+                        </div>
+
+                        <div class="featured-copy">
+                            <h4>Why it stuck with me</h4>
+                            <p>
+                                A masterclass in strategy, patience and thinking several moves ahead —
+                                it showed how engineering, people and decisions come together under
+                                pressure, one cool head at a time.
+                            </p>
+                            <ul class="featured-list">
+                                <li>Information is power, but clarity is more powerful.</li>
+                                <li>Small decisions, made early, change the outcome.</li>
+                                <li>Stay calm — systems fail when people panic.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+             TRAVEL — refreshed content + passport styling
+        ========================================== -->
+
+                <div class="topic-block topic-block--travel reveal" id="int-travel">
+
+                    <div class="topic-head">
+                        <div>
+                            <span class="eyebrow">03 · TRAVEL</span>
+                            <h3>Where the meets take me next</h3>
+                        </div>
+                        <span class="topic-tag">Route in progress</span>
+                    </div>
+
+                    <div class="travel-stats">
+                        <div class="travel-stat">
+                            <strong>1</strong>
+                            <span>Country reached through sport</span>
+                        </div>
+                        <div class="travel-stat">
+                            <strong>Multiple</strong>
+                            <span>Indian cities for Nationals</span>
+                        </div>
+                        <div class="travel-stat">
+                            <strong>Open</strong>
+                            <span>Next stamp: TBD</span>
+                        </div>
+                    </div>
+
+                    <div class="route-line">
+
+                        <div class="stamp">
+                            <strong>Home base</strong>
+                            <span>Where the 5 AM training starts</span>
+                        </div>
+
+                        <div class="stamp">
+                            <strong>National circuit</strong>
+                            <span>SGFI & ISSO Nationals, city to city across India</span>
+                        </div>
+
+                        <div class="stamp">
+                            <strong>Manama, Bahrain</strong>
+                            <span>ISF World Schools Championship, 2024</span>
+                        </div>
+
+                        <div class="stamp is-next">
+                            <strong>Next stop: TBD</strong>
+                            <span>Wherever the next start line is</span>
+                        </div>
+
+                    </div>
+
+                    <div class="travel-grid">
+
+                        <div class="travel-note">
+                            <h4>What travel means, so far</h4>
+                            <p>
+                                Travel, for me, has mostly happened through sport — a passport that fills up one
+                                start line at a time rather than one holiday at a time. Bahrain was the first stamp
+                                that came from competing rather than sightseeing, and it changed how I think about
+                                travel: not a break from the training, but an extension of it.
+                            </p>
+                            <p>
+                                Every Nationals trip adds a city I wouldn't otherwise have seen — a new track,
+                                a new crowd, a new way competitors from other states train. That's the part of
+                                travel I didn't expect to enjoy as much as the racing itself: comparing notes.
+                            </p>
+                        </div>
+
+                        <div class="travel-wishlist">
+                            <h4>On the radar</h4>
+                            <div class="wish-row">
+                                <strong>Next international meet</strong>
+                                <span>Wherever selection takes me</span>
+                            </div>
+                            <div class="wish-row">
+                                <strong>A university campus visit</strong>
+                                <span>Once shortlisting begins</span>
+                            </div>
+                            <div class="wish-row">
+                                <strong>A sports-science lab tour</strong>
+                                <span>Somewhere that studies motion the way I do</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+             MUSIC
+        ========================================== -->
+
+                <div class="topic-block topic-block--music reveal" id="int-music">
+
+                    <div class="topic-head">
+                        <div>
+                            <span class="eyebrow">04 · MUSIC</span>
+                            <h3>What's playing before the start line</h3>
+                        </div>
+                        <span class="topic-tag">3 moods</span>
+                    </div>
+
+                    <div class="mood-grid">
+
+                        <div class="mood-card">
+                            <div class="wave" style="--h:.9">
+                                <span style="--h:.4"></span><span style="--h:.9"></span><span style="--h:.6"></span>
+                                <span style="--h:1"></span><span style="--h:.5"></span><span style="--h:.8"></span>
+                                <span style="--h:.3"></span><span style="--h:.7"></span>
+                            </div>
+                            <h4>Warm-up</h4>
+                            <p>High-tempo, low-thinking. Just enough noise to stop overthinking the race.</p>
+                            <span class="mood-tag">HIGH ENERGY</span>
+                        </div>
+
+                        <div class="mood-card">
+                            <div class="wave">
+                                <span style="--h:.3"></span><span style="--h:.5"></span><span style="--h:.35"></span>
+                                <span style="--h:.6"></span><span style="--h:.4"></span><span style="--h:.55"></span>
+                                <span style="--h:.3"></span><span style="--h:.45"></span>
+                            </div>
+                            <h4>Lock-in</h4>
+                            <p>Instrumental, steady, repetitive. The same three or four tracks on loop while a problem set or a strategy sheet gets solved.</p>
+                            <span class="mood-tag">FOCUS</span>
+                        </div>
+
+                        <div class="mood-card">
+                            <div class="wave">
+                                <span style="--h:.6"></span><span style="--h:.35"></span><span style="--h:.5"></span>
+                                <span style="--h:.25"></span><span style="--h:.45"></span><span style="--h:.3"></span>
+                                <span style="--h:.4"></span><span style="--h:.2"></span>
+                            </div>
+                            <h4>Cool down</h4>
+                            <p>Slower, quieter, mostly acoustic. What's on after the session, once the adrenaline drops.</p>
+                            <span class="mood-tag">WIND DOWN</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-title">Krshay Venkatesan</div>
+                <div class="footer-meta">Engineering · Motion · Systems</div>
+            </div>
+            <div class="footer-links"><a href="index.html">Home</a><a href="research.html">Research</a><a
+                    href="projects.html">Projects</a><a href="academics.html">Academic Credentials</a><a
+                    href="internships.html">Internships</a><a href="impact.html">Impact</a><a href="awards.html">Honors
+                    & Awards</a><a href="interests.html">Interests</a></div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            /* REVEAL ON SCROLL — drives fades, mood-wave bars and counters */
+            const io = new IntersectionObserver(
+                entries => entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add("show");
+                        io.unobserve(e.target);
+                    }
+                }),
+                { threshold: 0.1 }
+            );
+            document.querySelectorAll(".reveal").forEach(e => io.observe(e));
+
+            /* SMOOTH SCROLL for pillar shortcuts */
+            document.querySelectorAll('.interests-content a[href^="#"]').forEach(link => {
+                link.addEventListener("click", event => {
+                    const target = document.querySelector(link.getAttribute("href"));
+                    if (!target) return;
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            });
+
+            /* NUMBER COUNTERS for the sport stat row */
+            document.querySelectorAll(".interests-content [data-count]").forEach(counter => {
+                const target = Number(counter.dataset.count);
+                let started = false;
+
+                const run = () => {
+                    if (started) return;
+                    started = true;
+                    const duration = 700;
+                    const start = performance.now();
+                    const update = now => {
+                        const progress = Math.min((now - start) / duration, 1);
+                        counter.textContent = Math.floor(target * (1 - Math.pow(1 - progress, 3)));
+                        if (progress < 1) requestAnimationFrame(update);
+                        else counter.textContent = target;
+                    };
+                    requestAnimationFrame(update);
+                };
+
+                const obs = new IntersectionObserver(entries => entries.forEach(e => {
+                    if (e.isIntersecting) { run(); obs.disconnect(); }
+                }));
+                obs.observe(counter);
+            });
+
+            /* ACTIVE STATE for the in-page pillar-jump nav */
+            const jumpLinks = document.querySelectorAll(".pillar-jump a");
+            const topicBlocks = document.querySelectorAll(".topic-block[id]");
+            if (jumpLinks.length && topicBlocks.length) {
+                const navObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute("id");
+                            jumpLinks.forEach(link => {
+                                link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+                            });
+                        }
+                    });
+                }, { threshold: 0.35, rootMargin: "-110px 0px -50% 0px" });
+                topicBlocks.forEach(block => navObserver.observe(block));
+            }
+
+        });
+    </script>
+    <script src="header.js"></script>
+</body>
+
+</html>
