@@ -4,49 +4,47 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#faf8f3">
+    <meta name="theme-color" content="#f5f7fb">
     <title>Interests — Krshay Venkatesan</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
     /* =========================================================
-   INTERESTS — LIGHT THEME
+   INTERESTS — LIGHT BLUEPRINT THEME
    Scoped to .interests-hero and .interests-content
    Signature: four coloured "pillars" (Sport / Books / Travel / Music)
    echoing the "Systems I live inside" motif from the homepage.
    Dark hero band stays as the site's cinematic entry point —
-   the content well below switches to a warm, editorial light theme.
-========================================================= */
+   the content well below switches to a light blueprint / grid-paper
+   theme (navy ink, blue + orange accents, faint drafting grid).
+    ========================================================= */
 
     .interests-hero,
     .interests-content {
-        --int-bg: #ffffff;
+        --int-bg: #f5f7fb;
         --int-surface: #ffffff;
-        --int-surface-2: #f3efe4;
-        --int-border: rgba(20, 18, 14, 0.09);
-        --int-border-strong: rgba(20, 18, 14, 0.18);
+        --int-surface-2: #eef2f9;
+        --int-border: rgba(15, 27, 46, 0.10);
+        --int-border-strong: rgba(15, 27, 46, 0.20);
+        --int-grid: rgba(21, 82, 214, 0.07);
 
-        --int-text: #17150f;
-        --int-text-soft: rgba(23, 21, 15, 0.68);
-        --int-text-muted: rgba(23, 21, 15, 0.46);
+        --int-text: #0f1b2e;
+        --int-text-soft: rgba(15, 27, 46, 0.68);
+        --int-text-muted: rgba(15, 27, 46, 0.46);
 
-        --int-sport: #d13f24;
-        --int-sport-soft: rgba(209, 63, 36, 0.10);
+        --int-sport: #ff5a1f;
+        --int-sport-soft: rgba(255, 90, 31, 0.10);
         --int-gold: #ab7a24;
         --int-gold-soft: rgba(171, 122, 36, 0.14);
 
-        --research-paper: #f7faff;
-
-        --int-books: #2952c8;
-        --int-books-soft: rgba(41, 82, 200, 0.09);
+        --int-books: #1552d6;
+        --int-books-soft: rgba(21, 82, 214, 0.09);
 
         --int-travel: #1c8f5c;
         --int-travel-soft: rgba(28, 143, 92, 0.10);
 
         --int-music: #6a48c9;
         --int-music-soft: rgba(106, 72, 201, 0.10);
-                --research-grid: rgba(20, 88, 170, .095);
-        --research-line: rgba(7, 91, 211, .18);
     }
 
     /* ---------------------------------------------------------
@@ -56,7 +54,6 @@
 
     .interests-hero {
         position: relative;
-        
     }
 
     .interests-hero .pillar-strip {
@@ -74,13 +71,13 @@
         opacity: .9;
     }
 
-    .interests-hero .pillar-strip span:nth-child(1) { background: #ff6b45; }
-    .interests-hero .pillar-strip span:nth-child(2) { background: #5c86ff; }
+    .interests-hero .pillar-strip span:nth-child(1) { background: #ff5a1f; }
+    .interests-hero .pillar-strip span:nth-child(2) { background: #1552d6; }
     .interests-hero .pillar-strip span:nth-child(3) { background: #37cf8f; }
     .interests-hero .pillar-strip span:nth-child(4) { background: #a988ff; }
 
     /* =========================================================
-   MAIN CONTENT WRAPPER — light, warm-paper editorial well
+   MAIN CONTENT WRAPPER — light blueprint / grid-paper well
 ========================================================= */
 
     .interests-content {
@@ -88,34 +85,24 @@
         isolation: isolate;
         overflow: hidden;
 
-        background: var(--int-bg);
+        background-color: var(--int-bg);
+        background-image:
+            linear-gradient(var(--int-grid) 1px, transparent 1px),
+            linear-gradient(90deg, var(--int-grid) 1px, transparent 1px);
+        background-size: 32px 32px;
         color: var(--int-text);
 
         padding: 110px 0 130px;
     }
 
-    /* soft colour washes, tuned down for a light surface */
+    /* soft colour washes over the grid */
     .interests-content::before {
         content: "";
         position: absolute;
         inset: 0;
         z-index: -2;
 
-        overflow: hidden;
-
-        background-color: var(--research-paper);
-
-        background-image:
-            linear-gradient(var(--research-grid) 1px,
-                transparent 1px),
-            linear-gradient(90deg,
-                var(--research-grid) 1px,
-                transparent 1px);
-
-        background-size:
-            40px 40px;
-
-        perspective: 1600px;
+       
     }
 
     /* fine paper grain — trend detail, keeps the light theme from feeling flat/sterile */
@@ -124,10 +111,10 @@
         position: absolute;
         inset: 0;
         z-index: -1;
-        opacity: 0.5;
+        opacity: 0.4;
         mix-blend-mode: multiply;
         pointer-events: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.02 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     .interests-content .container {
@@ -246,7 +233,7 @@
         border-radius: 20px;
 
         background: var(--int-surface);
-        box-shadow: 0 1px 2px rgba(23, 21, 15, 0.04);
+        box-shadow: 0 1px 2px rgba(15, 27, 46, 0.05);
 
         text-decoration: none;
         color: var(--int-text);
@@ -258,7 +245,7 @@
 
     .interests-content .pillar-tile:hover {
         transform: translateY(-6px);
-        box-shadow: 0 18px 34px -18px rgba(23, 21, 15, 0.22);
+        box-shadow: 0 18px 34px -18px rgba(15, 27, 46, 0.25);
     }
 
     .interests-content .pillar-tile .pillar-ring {
@@ -305,7 +292,7 @@
         background: var(--int-surface);
         border: 1px solid var(--int-border);
         border-radius: 28px;
-        box-shadow: 0 1px 2px rgba(23, 21, 15, 0.04);
+        box-shadow: 0 1px 2px rgba(15, 27, 46, 0.05);
 
         scroll-margin-top: 110px;
     }
@@ -356,7 +343,7 @@
     .topic-block--music .topic-tag { color: var(--int-music); background: var(--int-music-soft); border-color: transparent; }
 
     /* =========================================================
-   SPORT — stats + timeline + document vault
+   SPORT — stats + timeline + cricket bat sound + document vault
 ========================================================= */
 
     .interests-content .stat-row {
@@ -474,10 +461,160 @@
         white-space: nowrap;
     }
 
-    .interests-content .medal--gold { background: var(--int-gold-soft); color: var(--int-gold); }
+    .interests-content .medal--gold { background: var(--int-gold); color: #ffffff; }
     .interests-content .medal--silver { background: rgba(90, 100, 120, .12); color: #4d5566; }
     .interests-content .medal--intl { background: var(--int-sport-soft); color: var(--int-sport); }
-    .interests-content .medal--belt { background: rgba(23, 21, 15, .07); color: var(--int-text-soft); }
+    .interests-content .medal--belt { background: rgba(15, 27, 46, 0.219); color: var(--int-text-soft); }
+    .interests-content .medal--national { background: rgba(94, 255, 0, 0.219); color: var(--int-text-soft); }
+
+
+    /* ---------------------------------------------------------
+       CRICKET BAT SOUND — interactive tile referencing the
+       "Find the right note / tap to listen" reference panel
+    --------------------------------------------------------- */
+
+    .interests-content .bat-sound {
+        position: relative;
+        margin-bottom: 34px;
+        padding: 38px 42px;
+        border-radius: 22px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 30px;
+        background: linear-gradient(160deg, #101d33, #050a14 78%);
+        color: #f4f6f9;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .interests-content .bat-sound::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 88% 18%, rgba(255, 90, 31, 0.22), transparent 45%),
+            radial-gradient(circle at 6% 88%, rgba(21, 82, 214, 0.20), transparent 45%);
+        pointer-events: none;
+    }
+
+    .interests-content .bat-sound-copy,
+    .interests-content .bat-tap,
+    .interests-content .bat-wave-wrap {
+        position: relative;
+        z-index: 1;
+    }
+
+    .interests-content .bat-sound-copy h4 {
+        margin: 0 0 6px;
+        font-family: inherit;
+        font-size: 19px;
+        font-weight: 800;
+        letter-spacing: -.02em;
+        color: #fff;
+    }
+
+    .interests-content .bat-sound-sub {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--int-sport);
+    }
+
+    .interests-content .bat-sound-sub::before {
+        content: "";
+        width: 22px;
+        height: 1px;
+        background: var(--int-sport);
+    }
+
+    .interests-content .bat-tap {
+        all: unset;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 6px;
+        border-radius: 14px;
+        transition: transform .2s ease;
+    }
+
+    .interests-content .bat-tap:hover { transform: translateY(-3px); }
+    .interests-content .bat-tap:active { transform: translateY(0) scale(.97); }
+
+    .interests-content .bat-icon {
+        width: 58px;
+        height: 128px;
+        transform: rotate(-14deg);
+        transition: transform .25s ease;
+    }
+
+    .interests-content .bat-tap:hover .bat-icon { transform: rotate(-8deg); }
+
+    .interests-content .bat-sweet-spot {
+        transition: r .18s ease, opacity .18s ease, fill .18s ease;
+    }
+
+    .interests-content .bat-icon.is-hit .bat-sweet-spot {
+        r: 10;
+        opacity: 1;
+    }
+
+    .interests-content .bat-tap-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: rgba(244, 246, 249, 0.6);
+    }
+
+    .interests-content .bat-wave-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+    }
+
+    .interests-content .bat-wave {
+        display: flex;
+        align-items: flex-end;
+        gap: 3px;
+        height: 54px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .interests-content .bat-wave span {
+        flex: 1;
+        min-width: 3px;
+        border-radius: 2px;
+        background: var(--int-sport);
+        opacity: .55;
+        height: 8%;
+        transition: height .16s ease, opacity .16s ease;
+    }
+
+    .interests-content .bat-wave-note {
+        font-size: 11px;
+        color: rgba(244, 246, 249, 0.55);
+        text-align: right;
+    }
+
+    @media (max-width: 760px) {
+        .interests-content .bat-sound {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+        .interests-content .bat-wave-wrap { align-items: center; }
+        .interests-content .bat-wave-note { text-align: center; }
+    }
 
     /* document vault */
 
@@ -645,7 +782,7 @@
     .interests-content .spine:hover {
         transform: translateY(-5px);
         border-color: var(--int-books);
-        box-shadow: 0 16px 30px -20px rgba(41, 82, 200, .35);
+        box-shadow: 0 16px 30px -20px rgba(21, 82, 214, .35);
     }
 
     .interests-content .spine strong {
@@ -673,13 +810,9 @@
 
         padding: 28px;
         border-radius: 20px;
-        background:
-            repeating-linear-gradient(
-                var(--int-surface) 0px, var(--int-surface) 27px,
-                var(--int-border) 27px, var(--int-border) 28px
-            );
+        background: var(--int-surface-2);
         border: 1px solid var(--int-border);
-        box-shadow: 0 1px 2px rgba(23, 21, 15, 0.04);
+        box-shadow: 0 1px 2px rgba(15, 27, 46, 0.05);
     }
 
     .interests-content .featured-cover {
@@ -691,7 +824,7 @@
         padding: 18px;
         border-radius: 12px;
 
-        background: linear-gradient(160deg, var(--int-books), #17307a);
+        background: linear-gradient(160deg, var(--int-books), #0c1f5c);
         border: 1px solid var(--int-border-strong);
         box-shadow: 6px 6px 0 var(--int-border-strong);
     }
@@ -1218,7 +1351,7 @@
                 <div class="int-intro reveal">
                     <div>
                         <span class="eyebrow">INTERESTS</span>
-                        <h2>Four things,<br>one curiosity.</h2>
+                        <h2 style="color: #000;">Four things,<br><span style="color: #0367fd;">one curiosity.</span></h2>
                     </div>
                     <p>
                         Sport built the discipline, books built the questions, travel is where the next
@@ -1227,16 +1360,6 @@
                     </p>
                 </div>
 
-                <!-- =========================================
-             IN-PAGE PILLAR NAV
-        ========================================== -->
-
-                <nav class="pillar-jump reveal" aria-label="Jump to a topic">
-                    <a href="#int-sport" data-pillar="sport" class="active">🏃 Sport</a>
-                    <a href="#int-books" data-pillar="books">📖 Books</a>
-                    <a href="#int-travel" data-pillar="travel">🧭 Travel</a>
-                    <a href="#int-music" data-pillar="music">🎧 Music</a>
-                </nav>
 
                 <!-- =========================================
              PILLAR PREVIEW ROW
@@ -1332,7 +1455,7 @@
                                     SGFI Nationals
                                     <small>School Games Federation of India</small>
                                 </div>
-                                <span class="medal medal--belt">National</span>
+                                <span class="medal medal--national">National</span>
                             </div>
 
                             <div class="track-row">
@@ -1368,7 +1491,7 @@
                                     SGFI Nationals
                                     <small>School Games Federation of India</small>
                                 </div>
-                                <span class="medal medal--belt">National</span>
+                                <span class="medal medal--national">National</span>
                             </div>
 
                             <div class="track-row">
@@ -1391,6 +1514,41 @@
                                 the discipline underneath both — the black belt didn't come from talent,
                                 it came from showing up on the days motivation didn't.
                             </p>
+                        </div>
+
+                    </div>
+
+                    <!-- =========================================
+                 CRICKET BAT SOUND — tap to hear the note
+            ========================================== -->
+
+                    <div class="bat-sound reveal">
+
+                        <button class="bat-tap" id="batTap" aria-label="Tap to hear the sound of a cricket bat">
+                            <svg class="bat-icon" id="batIcon" viewBox="0 0 60 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="24" y="4" width="12" height="34" rx="5" stroke="#f4f6f9" stroke-width="2" fill="none"/>
+                                <path d="M14 34 h32 a10 10 0 0 1 10 10 v52 a14 14 0 0 1 -14 14 h-24 a14 14 0 0 1 -14 -14 v-52 a10 10 0 0 1 10 -10 Z"
+                                      fill="#e9e2d3" stroke="#0f1b2e" stroke-width="2"/>
+                                <line x1="18" y1="44" x2="42" y2="44" stroke="#0f1b2e" stroke-width="1" opacity=".35"/>
+                                <line x1="16" y1="52" x2="44" y2="52" stroke="#0f1b2e" stroke-width="1" opacity=".35"/>
+                                <circle class="bat-sweet-spot" cx="30" cy="78" r="6" fill="#ff5a1f" opacity=".85"/>
+                            </svg>
+                            <span class="bat-tap-label">Tap to listen</span>
+                        </button>
+
+                        <div class="bat-sound-copy">
+                            <h4>The sound of a cricket bat</h4>
+                            <span class="bat-sound-sub">Find the right note</span>
+                        </div>
+
+                        <div class="bat-wave-wrap">
+                            <div class="bat-wave" id="batWave">
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <span class="bat-wave-note">That one sound. That settles everything.</span>
                         </div>
 
                     </div>
@@ -1786,6 +1944,99 @@
                     });
                 }, { threshold: 0.35, rootMargin: "-110px 0px -50% 0px" });
                 topicBlocks.forEach(block => navObserver.observe(block));
+            }
+
+            /* =========================================
+               CRICKET BAT SOUND — synthesised "tock" +
+               live waveform, no audio file required
+            ========================================== */
+            const batTap = document.getElementById("batTap");
+            const batIcon = document.getElementById("batIcon");
+            const batWave = document.getElementById("batWave");
+
+            if (batTap && batWave) {
+                const waveBars = Array.from(batWave.children);
+                let audioCtx = null;
+                let waveTimer = null;
+
+                function getAudioContext() {
+                    if (!audioCtx) {
+                        const Ctx = window.AudioContext || window.webkitAudioContext;
+                        if (Ctx) audioCtx = new Ctx();
+                    }
+                    if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+                    return audioCtx;
+                }
+
+                function playBatKnock() {
+                    const ctx = getAudioContext();
+                    if (!ctx) return;
+                    const now = ctx.currentTime;
+
+                    // low wooden "thock" body
+                    const osc = ctx.createOscillator();
+                    osc.type = "triangle";
+                    osc.frequency.setValueAtTime(210, now);
+                    osc.frequency.exponentialRampToValueAtTime(70, now + 0.14);
+                    const oscGain = ctx.createGain();
+                    oscGain.gain.setValueAtTime(0.55, now);
+                    oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+                    osc.connect(oscGain).connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.22);
+
+                    // sharp "crack" transient from a filtered noise burst
+                    const bufferSize = Math.floor(ctx.sampleRate * 0.09);
+                    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                    const data = buffer.getChannelData(0);
+                    for (let i = 0; i < bufferSize; i++) {
+                        data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize);
+                    }
+                    const noise = ctx.createBufferSource();
+                    noise.buffer = buffer;
+                    const bandpass = ctx.createBiquadFilter();
+                    bandpass.type = "bandpass";
+                    bandpass.frequency.value = 2400;
+                    bandpass.Q.value = 1.1;
+                    const noiseGain = ctx.createGain();
+                    noiseGain.gain.setValueAtTime(0.5, now);
+                    noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                    noise.connect(bandpass).connect(noiseGain).connect(ctx.destination);
+                    noise.start(now);
+                }
+
+                function animateWave() {
+                    clearInterval(waveTimer);
+                    let frame = 0;
+                    const totalFrames = 22;
+                    waveTimer = setInterval(() => {
+                        frame++;
+                        const decay = Math.max(0, 1 - frame / totalFrames);
+                        waveBars.forEach((bar, i) => {
+                            const jitter = Math.random();
+                            const centerBias = 1 - Math.abs(i - waveBars.length / 2) / (waveBars.length / 2);
+                            const h = 8 + jitter * decay * centerBias * 92;
+                            bar.style.height = h + "%";
+                            bar.style.opacity = 0.35 + decay * 0.5;
+                        });
+                        if (frame >= totalFrames) {
+                            clearInterval(waveTimer);
+                            waveBars.forEach(bar => {
+                                bar.style.height = "8%";
+                                bar.style.opacity = "0.45";
+                            });
+                        }
+                    }, 45);
+                }
+
+                batTap.addEventListener("click", () => {
+                    playBatKnock();
+                    animateWave();
+                    if (batIcon) {
+                        batIcon.classList.add("is-hit");
+                        setTimeout(() => batIcon.classList.remove("is-hit"), 220);
+                    }
+                });
             }
 
         });
