@@ -379,9 +379,59 @@
             transform: translateY(0);
         }
 
+
         /* =========================================================
-           RESPONSIVE
-        ========================================================= */
+   AWARD CORNER BACKGROUND IMAGE
+   Uses each award's existing .award-medal img
+   No alignment/layout changes
+========================================================= */
+
+        .award-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background award image */
+        .award-card::after {
+            content: "";
+
+            position: absolute;
+            top: -28px;
+            right: -28px;
+
+            width: 200px;
+            height: 200px;
+
+            background-image: var(--award-bg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+
+            opacity: 0.10;
+
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            transition:
+                opacity .4s ease,
+                transform .5s cubic-bezier(.2, .8, .2, 1);
+        }
+
+
+        /* Keep your existing award content above the background */
+        .award-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* Optional hover effect */
+        .award-card:hover::after {
+            opacity: 0.16;
+            transform: scale(1.06) rotate(2deg);
+        }
 
         @media (max-width: 1000px) {
             .awards-grid {
@@ -545,8 +595,8 @@
                         </div>
                         <div class="award-actions">
                             <span class="award-file-label">Award / Certificate</span>
-                            <a class="award-certificate-btn" href="certificate/awards/AIMO.pdf"
-                                target="_blank" rel="noopener">
+                            <a class="award-certificate-btn" href="certificate/awards/AIMO.pdf" target="_blank"
+                                rel="noopener">
                                 <span>View Award</span><strong>↗</strong>
                             </a>
                         </div>
@@ -555,15 +605,16 @@
                     <article class="award-card reveal" data-index="02">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/HKIMO.png" alt="HKIMO Gold Medal"></div>
+                                <div class="award-medal"><img src="assets/awards/HKIMO.png" alt="HKIMO Gold Medal">
+                                </div>
                             </div>
                             <h3>Hong Kong Int'l Mathematics Olympiad (HKIMO)</h3>
                             <p>Gold Medal</p>
                         </div>
                         <div class="award-actions">
                             <span class="award-file-label">Award / Certificate</span>
-                            <a class="award-certificate-btn" href="certificate/awards/HKIMO.pdf"
-                                target="_blank" rel="noopener">
+                            <a class="award-certificate-btn" href="certificate/awards/HKIMO.pdf" target="_blank"
+                                rel="noopener">
                                 <span>View Award</span><strong>↗</strong>
                             </a>
                         </div>
@@ -572,15 +623,15 @@
                     <article class="award-card reveal" data-index="03">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/computing.png" alt="Canadian Computing Contest 2026 Certificate"></div>
+                                <div class="award-medal"><img src="assets/awards/computing.png"
+                                        alt="Canadian Computing Contest 2026 Certificate"></div>
                             </div>
                             <h3>Canadian Computing Contest 2026</h3>
                             <p>Distinction · Junior · 52/75</p>
                         </div>
                         <div class="award-actions">
                             <span class="award-file-label">Certificate</span>
-                            <a class="award-certificate-btn"
-                                href="certificate/computing.jpeg" target="_blank"
+                            <a class="award-certificate-btn" href="certificate/computing.jpeg" target="_blank"
                                 rel="noopener">
                                 <span>View Certificate</span><strong>↗</strong>
                             </a>
@@ -590,15 +641,16 @@
                     <article class="award-card reveal" data-index="04">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/Yale.jpg" alt="World Scholar's Cup — Yale Invitational Award"></div>
+                                <div class="award-medal"><img src="assets/awards/Yale.jpg"
+                                        alt="World Scholar's Cup — Yale Invitational Award"></div>
                             </div>
                             <h3>World Scholar's Cup — Yale Invitational</h3>
                             <p>13th in the World · Runner-Up</p>
                         </div>
                         <div class="award-actions">
                             <span class="award-file-label">Award / Certificate</span>
-                            <a class="award-certificate-btn" href="certificate/awards/Yale.jpg"
-                                target="_blank" rel="noopener">
+                            <a class="award-certificate-btn" href="certificate/awards/Yale.jpg" target="_blank"
+                                rel="noopener">
                                 <span>View Award</span><strong>↗</strong>
                             </a>
                         </div>
@@ -607,7 +659,8 @@
                     <article class="award-card reveal" data-index="05">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/AMC.jpg" alt="AMC 10 (2024) Certificate"></div>
+                                <div class="award-medal"><img src="assets/awards/AMC.jpg"
+                                        alt="AMC 10 (2024) Certificate"></div>
                             </div>
                             <h3>AMC 10 (2024)</h3>
                             <p>Highest Score — School</p>
@@ -624,7 +677,8 @@
                     <article class="award-card reveal" data-index="06">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/AVAGADRO.png" alt="CEMC Pascal 2024 Certificate"></div>
+                                <div class="award-medal"><img src="assets/awards/AVAGADRO.png"
+                                        alt="CEMC Pascal 2024 Certificate"></div>
                             </div>
                             <h3>CEMC Pascal 2024</h3>
                             <p>Distinction</p>
@@ -640,7 +694,8 @@
                     <article class="award-card reveal" data-index="07">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/AVAGADRO.png" alt="Avogadro Chemistry Exam 2026 Certificate"></div>
+                                <div class="award-medal"><img src="assets/awards/AVAGADRO.png"
+                                        alt="Avogadro Chemistry Exam 2026 Certificate"></div>
                             </div>
                             <h3>Avogadro Chemistry Exam 2026</h3>
                             <p>Distinction</p>
@@ -656,15 +711,16 @@
                     <article class="award-card reveal" data-index="08">
                         <div>
                             <div class=" award-top">
-                                <div class="award-medal"><img src="assets/awards/AVAGADRO.png" alt="Infinity Maths Competition 2024 Certificate"></div>
+                                <div class="award-medal"><img src="assets/awards/AVAGADRO.png"
+                                        alt="Infinity Maths Competition 2024 Certificate"></div>
                             </div>
                             <h3>Infinity Maths Competition 2024</h3>
                             <p>India South Zone Runner-Up</p>
                         </div>
                         <div class="award-actions">
                             <span class="award-file-label">Award / Certificate</span>
-                            <a class="award-certificate-btn" href="certificate/awards/Maths-2024.jpeg"
-                                target="_blank" rel="noopener">
+                            <a class="award-certificate-btn" href="certificate/awards/Maths-2024.jpeg" target="_blank"
+                                rel="noopener">
                                 <span>View Award</span><strong>↗</strong>
                             </a>
                         </div>
@@ -688,15 +744,15 @@
                     <article class="award-card reveal" data-index="10">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/TRINITY.png" alt="Trinity Communication Grades 1–7 Certificate"></div>
+                                <div class="award-medal"><img src="assets/awards/TRINITY.png"
+                                        alt="Trinity Communication Grades 1–7 Certificate"></div>
                             </div>
                             <h3>Trinity Communication Grades 1–7</h3>
                             <p>Distinction at every grade</p>
                         </div>
                         <div class="award-actions">
                             <span class="award-file-label">Certificates</span>
-                            <a class="award-certificate-btn"
-                                href="certificate/awards/TRINITY.pdf" target="_blank"
+                            <a class="award-certificate-btn" href="certificate/awards/TRINITY.pdf" target="_blank"
                                 rel="noopener">
                                 <span>View Certificates</span><strong>↗</strong>
                             </a>
@@ -723,15 +779,16 @@
                     <article class="award-card reveal" data-index="12">
                         <div>
                             <div class="award-top">
-                                <div class="award-medal"><img src="assets/awards/CREST.png" alt="CREST Gold Award"></div>
+                                <div class="award-medal"><img src="assets/awards/CREST.png" alt="CREST Gold Award">
+                                </div>
                             </div>
                             <h3>CREST Gold Award</h3>
                             <p>ACL Rehabilitation Knee Sleeve Research</p>
                         </div>
                         <div class="award-actions">
                             <span class="award-file-label">Award / Certificate</span>
-                            <a class="award-certificate-btn" href="certificate/awards/CREST.pdf"
-                                target="_blank" rel="noopener">
+                            <a class="award-certificate-btn" href="certificate/awards/CREST.pdf" target="_blank"
+                                rel="noopener">
                                 <span>View Award</span><strong>↗</strong>
                             </a>
                         </div>
@@ -846,6 +903,25 @@
         );
 
         document.querySelectorAll(".reveal").forEach(element => io.observe(element));
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.querySelectorAll(".award-card").forEach(function (card) {
+
+                const medalImage = card.querySelector(".award-medal img");
+
+                if (medalImage) {
+
+                    const imagePath = medalImage.getAttribute("src");
+
+                    card.style.setProperty(
+                        "--award-bg",
+                        `url("${imagePath}")`
+                    );
+                }
+
+            });
+
+        });
     </script>
 
     <script src="header.js"></script>
