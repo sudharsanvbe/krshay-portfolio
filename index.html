@@ -6,28 +6,735 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#08111e">
     <title>Krshay Venkatesan — Engineering · Motion · Systems</title>
-    <link rel="stylesheet" href="styles.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <link rel="stylesheet" href="styles.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
+
+    <!--
+      NOTE: this page intentionally does NOT load styles.css.
+      styles.css has three stacked :root blocks and four repeated
+      "FINAL HERO OVERRIDE" sections all fighting over the same
+      .hero / .node.n1-n7 / .blueprint-container rules with !important —
+      that conflict is what was smashing the headline into the cards.
+      This page uses its own scoped "home-*" classes below so it can't
+      collide with whatever styles.css does on your other pages.
+    -->
+    <style>
+        :root {
+            --ink: #0b1728;
+            --blue: #1547a8;
+            --blue2: #2b6bd8;
+            --paper: #f7f8f4;
+            --orange: #e85a20;
+            --muted: #66758a;
+            --line: #c7d3e2;
+            --mono: 'DM Mono', monospace;
+            --display: 'Space Grotesk', sans-serif;
+            --sans: 'Inter', sans-serif;
+            --hand: 'Caveat', cursive;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            /* lock the whole page — no scroll */
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ===========================================================
+           PAGE — three fixed-height bars + two flexible zones,
+           adding up to exactly 100vh, no overflow anywhere
+        =========================================================== */
+
+        .home-view {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ---------- 1. RESUME STRIP ---------- */
+
+        .home-resume {
+            flex: 0 0 clamp(22px, 2.6vh, 30px);
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            gap: 8px;
+            background: #fff;
+            border-bottom: 1px solid var(--line);
+            font-family: var(--mono);
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            transition: background .2s ease;
+        }
+
+        .home-resume:hover {
+            background: #eef4ff;
+        }
+
+        .home-resume span {
+            color: var(--orange);
+        }
+
+        /* ---------- 2. HERO ---------- */
+
+        .home-hero {
+            position: relative;
+            flex: 1.55 1 0;
+            min-height: 0;
+            overflow: hidden;
+            background: #05080b;
+            color: #fff;
+        }
+
+        .home-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(90deg, rgba(0, 0, 0, .32) 0%, rgba(0, 0, 0, .05) 42%, rgba(0, 0, 0, .55) 100%),
+                url("assets/hero-motion.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .home-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+            background-size: 46px 46px;
+            mask-image: linear-gradient(90deg, #000, transparent 90%);
+        }
+
+        /* brand mark, top-left of hero */
+
+        .home-brand {
+            position: absolute;
+            top: clamp(10px, 1.8vh, 18px);
+            left: clamp(18px, 2vw, 28px);
+            z-index: 5;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(20px, 2vw, 28px);
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            color: #fff;
+        }
+
+        /* vertical nav, left side of hero */
+
+        .home-nav {
+            position: absolute;
+            left: clamp(18px, 2vw, 28px);
+            top: clamp(50px, 8vh, 68px);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(8px, 1.3vh, 13px);
+        }
+
+        .home-nav a {
+            position: relative;
+            padding-left: 12px;
+            text-align: right;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(8px, .78vw, 9.5px);
+            font-weight: 500;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .58);
+            transition: color .2s ease, transform .2s ease;
+        }
+
+        .home-nav a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: transparent;
+            transform: translateY(-50%);
+        }
+
+        .home-nav a:hover {
+            color: #fff;
+            transform: translateX(2px);
+        }
+
+        .home-nav a.active {
+            color: #fff;
+        }
+
+        .home-nav a.active::before {
+            background: var(--orange);
+        }
+
+        /* name + tagline, centered in the hero's right-of-photo space */
+
+        .home-hero-content {
+            position: absolute;
+            z-index: 4;
+            left: clamp(30%, 33vw, 36%);
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(46vw, 640px);
+        }
+
+        .home-hero-content h1 {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            line-height: .9;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: clamp(2.1rem, 4.6vw, 4.6rem);
+            text-shadow: 0 3px 22px rgba(0, 0, 0, .35);
+        }
+
+        .home-hero-rule {
+            width: 100%;
+            max-width: 420px;
+            height: 1px;
+            margin: clamp(12px, 1.8vh, 20px) 0 0;
+            background: rgba(255, 255, 255, .78);
+        }
+
+        .home-hero-tagline {
+            margin-top: clamp(12px, 1.8vh, 20px);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-family: var(--mono);
+            font-size: clamp(9px, .95vw, 13px);
+            font-weight: 500;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .home-hero-tagline b {
+            color: var(--orange);
+            font-weight: 700;
+            letter-spacing: .28em;
+        }
+
+        /* knee X-ray art on the right — nods to the reference composition */
+
+        .home-hero-side {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20vw;
+            z-index: 3;
+            background-size: contain;
+            background-position: right center;
+            background-repeat: no-repeat;
+            opacity: .9;
+        }
+
+        /* ---------- 3. MARQUEE ---------- */
+
+        .home-marquee {
+            flex: 0 0 clamp(30px, 3.4vh, 37px);
+            overflow: hidden;
+            white-space: nowrap;
+            background: #00297c;
+            border-block: 1px solid #123b8c;
+            display: flex;
+            align-items: center;
+        }
+
+        .home-marquee-track {
+            display: inline-flex;
+            gap: 30px;
+            padding-left: 30px;
+            font-family: var(--mono);
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: #fff;
+            animation: home-marquee 24s linear infinite;
+        }
+
+        @keyframes home-marquee {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ---------- 4. SYSTEMS GRID ---------- */
+
+        .home-systems {
+            flex: 1 1 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            padding: clamp(10px, 1.6vh, 18px) clamp(20px, 2.8vw, 40px);
+            background-color: var(--paper);
+            background-image:
+                linear-gradient(rgba(21, 71, 168, .05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 71, 168, .05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .home-systems-head {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: clamp(8px, 1.4vh, 14px);
+        }
+
+        .home-systems-head h2 {
+            font-family: var(--display);
+            font-weight: 700;
+            letter-spacing: -.02em;
+            text-transform: uppercase;
+            color: var(--ink);
+            font-size: clamp(1rem, 1.6vw, 1.5rem);
+        }
+
+        .home-systems-head h2 b {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .home-systems-head p {
+            max-width: 360px;
+            font-family: var(--mono);
+            font-size: 9px;
+            line-height: 1.6;
+            letter-spacing: .02em;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .home-systems-grid {
+            flex: 1 1 0;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .home-card {
+            position: relative;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 11px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .home-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--blue);
+            box-shadow: 0 12px 26px rgba(16, 47, 103, .12);
+        }
+
+        .home-card-num {
+            font-family: var(--mono);
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            color: var(--orange);
+        }
+
+        .home-card-img {
+            flex: 1 1 0;
+            min-height: 0;
+            margin: 6px 0 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(150deg, #f2f6fb, #e7eff8);
+            border: 1px solid rgba(21, 71, 168, .12);
+            border-radius: 7px;
+        }
+
+        .home-card-img img {
+            max-width: 82%;
+            max-height: 82%;
+            object-fit: contain;
+        }
+
+        .home-card-cat {
+            display: block;
+            font-family: var(--mono);
+            font-size: 6px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 3px;
+        }
+
+        .home-card h3 {
+            font-family: var(--display);
+            font-weight: 700;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            color: var(--ink);
+            font-size: clamp(9.5px, .95vw, 12px);
+            line-height: 1.15;
+        }
+
+        .home-card p {
+            display: none;
+            /* hidden by default to guarantee no-overflow */
+            font-size: 8px;
+            line-height: 1.35;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        /* show the description only when there is enough vertical room */
+        @media (min-height: 760px) {
+            .home-card p {
+                display: block;
+            }
+        }
+
+        /* ===========================================================
+           RESPONSIVE — below ~860px wide, a locked no-scroll 7-column
+           grid stops being legible, so this page switches to a normal
+           scrolling layout instead of shrinking text unreadably small.
+        =========================================================== */
+
+        @media (max-width: 860px) {
+
+            html,
+            body {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .home-view {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .home-hero {
+                flex: none;
+                height: 78vh;
+            }
+
+            .home-hero-content {
+                left: 8%;
+                width: 84%;
+                top: 40%;
+            }
+
+            .home-hero-side {
+                display: none;
+            }
+
+            .home-nav {
+                display: none;
+            }
+
+            .home-systems {
+                flex: none;
+                padding: 26px 20px 40px;
+            }
+
+            .home-systems-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .home-card {
+                min-height: 190px;
+            }
+
+            .home-card p {
+                display: block !important;
+            }
+
+            .home-systems-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .home-systems-head p {
+                text-align: left;
+            }
+        }
+
+        /* =========================================================
+   HOME SYSTEM CARD — HOVER ZOOM PREVIEW
+========================================================= */
+
+        .home-card {
+            cursor: crosshair;
+        }
+
+        /* Image zoom area */
+        .home-card-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-card-img img {
+            transition:
+                transform .45s cubic-bezier(.2, .8, .2, 1),
+                filter .35s ease;
+            transform-origin: center center;
+        }
+
+        /* Zoom image when hovering card */
+        .home-card:hover .home-card-img img {
+            transform: scale(1.18);
+        }
+
+        /* Image area becomes slightly highlighted */
+        .home-card:hover .home-card-img {
+            border-color: rgba(21, 71, 168, .45);
+        }
+
+
+        /* =========================================================
+   FLOATING ZOOM PANEL
+========================================================= */
+
+        .home-image-preview {
+            position: fixed;
+
+            width: min(430px, 34vw);
+            height: min(430px, 55vh);
+
+            right: 28px;
+            top: 50%;
+
+            transform: translateY(-50%) scale(.96);
+
+            z-index: 9999;
+
+            padding: 14px;
+
+            background: rgba(255, 255, 255, .97);
+            border: 1px solid var(--blue);
+            border-radius: 12px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, .28),
+                0 0 0 1px rgba(21, 71, 168, .08);
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity .25s ease,
+                transform .3s cubic-bezier(.2, .8, .2, 1),
+                visibility .25s ease;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* Active preview */
+
+        .home-image-preview.active {
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(-50%) scale(1);
+        }
+
+
+        /* =========================================================
+   PREVIEW IMAGE
+========================================================= */
+
+        .home-image-preview-image {
+            flex: 1 1 auto;
+            min-height: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(rgba(21, 71, 168, .045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 71, 168, .045) 1px, transparent 1px);
+
+            background-size: 24px 24px;
+
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        .home-image-preview-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            padding: 20px;
+
+            transition: transform .45s ease;
+        }
+
+
+        /* =========================================================
+   PREVIEW DETAILS
+========================================================= */
+
+        .home-image-preview-details {
+            flex: 0 0 auto;
+
+            padding: 12px 4px 2px;
+        }
+
+        .home-image-preview-number {
+            font-family: var(--mono);
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: .12em;
+
+            color: var(--orange);
+
+            margin-bottom: 4px;
+        }
+
+        .home-image-preview-category {
+            font-family: var(--mono);
+            font-size: 7px;
+
+            letter-spacing: .1em;
+            text-transform: uppercase;
+
+            color: var(--blue);
+
+            margin-bottom: 3px;
+        }
+
+        .home-image-preview-title {
+            font-family: var(--display);
+            font-size: clamp(17px, 1.5vw, 23px);
+            font-weight: 700;
+
+            line-height: 1.05;
+
+            text-transform: uppercase;
+
+            color: var(--ink);
+        }
+
+        .home-image-preview-description {
+            margin-top: 5px;
+
+            font-family: var(--sans);
+            font-size: 9px;
+
+            line-height: 1.4;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+   TECHNICAL CORNERS
+========================================================= */
+
+        .home-image-preview::before,
+        .home-image-preview::after {
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+            height: 18px;
+
+            pointer-events: none;
+        }
+
+        .home-image-preview::before {
+            left: -1px;
+            top: -1px;
+
+            border-left: 2px solid var(--orange);
+            border-top: 2px solid var(--orange);
+        }
+
+        .home-image-preview::after {
+            right: -1px;
+            bottom: -1px;
+
+            border-right: 2px solid var(--orange);
+            border-bottom: 2px solid var(--orange);
+        }
+
+
+        /* =========================================================
+   MOBILE / SMALL SCREEN
+========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .home-image-preview {
+                width: 320px;
+                height: 390px;
+
+                right: 15px;
+            }
+        }
+
+
+        /* Disable floating preview on mobile */
+        @media (max-width: 860px) {
+
+            .home-image-preview {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header class="site-header">
 
         <div class="header-inner">
-
-            <!-- BRAND -->
-            <a class="brand" href="index.html" aria-label="Krshay Venkatesan — Home" style="margin-bottom: 10px;">
-                <span class="brand-mark">K</span>
-                <span class="brand-name">
-                </span>
-                <br>
-            </a>
             <!-- NAVIGATION -->
             <nav class="main-nav" aria-label="Primary navigation">
 
@@ -59,10 +766,6 @@
                     <span>AWARDS</span>
                 </a>
 
-                <a href="interests.html">
-                    <span>INTERESTS</span>
-                </a>
-
             </nav>
 
             <!-- MOBILE MENU -->
@@ -83,871 +786,202 @@
         </div>
 
     </header>
-    <main>
-        <section class="hero">
+    <div class="home-view">
+        <!-- ---------- 1. RESUME STRIP ---------- -->
+        <a class="home-resume" href="Krshay_Venkatesan_CV.pdf" target="_blank" style="text-align:left;">
+            View Full Résumé <span>→</span>
+        </a>
+        <!-- ---------- 2. HERO ---------- -->
+        <section class="home-hero">
+            <div class="home-hero-bg"></div>
+            <div class="home-hero-grid"></div>
+            <div class="home-hero-side"></div>
 
-            <!-- FULL-WIDTH HERO IMAGE -->
-            <div class="hero-bg"></div>
-
-
-            <!-- HERO TITLE -->
-            <div class="hero-content">
-
-                <h1>
-                    <span>KRSHAY</span>
-                    <span>VENKATESAN</span>
-                </h1>
-
-                <div class="hero-rule"></div>
-
-                <div class="hero-tagline">
-                    <span>ENGINEERING <b>MOTION.</b></span>
-                    <span>UNDERSTANDING <b>SYSTEMS.</b></span>
+            <div class="home-hero-content">
+                <h1><span>Krshay</span><span>Venkatesan</span></h1>
+                <div class="home-hero-rule"></div>
+                <div class="home-hero-tagline">
+                    <span>Engineering <b>( Motion )</b></span>
+                    <span>Understanding <b>( Systems )</b></span>
                 </div>
-
             </div>
-
-
-            <!-- SCROLL -->
-            <div class="scroll-indicator">
-                <span>SCROLL TO EXPLORE</span>
-                <i>↓</i>
-            </div>
-
-
-            <!-- HERO STATS -->
-            <div class="hero-stats">
-
-                <div class="hero-stat">
-                    <strong>1570</strong>
-                    <span>SAT score</span>
-                </div>
-
-                <div class="hero-stat">
-                    <strong>9 A*</strong>
-                    <span>IGCSE</span>
-                </div>
-
-                <div class="hero-stat">
-                    <strong>4</strong>
-                    <span>Published / accepted research</span>
-                </div>
-
-                <div class="hero-stat">
-                    <strong>3</strong>
-                    <span>National athlete</span>
-                </div>
-
-                <div class="hero-stat">
-                    <strong>20+</strong>
-                    <span>Training hrs / week</span>
-                </div>
-
-                <div class="hero-stat">
-                    <strong>50 hrs</strong>
-                    <span>IIT Madras internship</span>
-                </div>
-
-            </div>
-
         </section>
-        <div class="marquee">
-            <div class="marquee-track">ENGINEERING · MOTION · HUMAN PERFORMANCE · MECHATRONICS · RESEARCH · CRICKET ·
-                SYSTEMS · ENGINEERING · MOTION · HUMAN PERFORMANCE · MECHATRONICS · RESEARCH · CRICKET · SYSTEMS ·
-                BIOMECHANICS</div>
+
+        <!-- ---------- 3. MARQUEE ---------- -->
+        <div class="home-marquee">
+            <div class="home-marquee-track">
+                <span>ENGINEERING · MOTION · HUMAN PERFORMANCE · MECHATRONICS · RESEARCH · CRICKET · SYSTEMS ·
+                    BIOMECHANICS</span>
+                <span>ENGINEERING · MOTION · HUMAN PERFORMANCE · MECHATRONICS · RESEARCH · CRICKET · SYSTEMS ·
+                    BIOMECHANICS</span>
+            </div>
         </div>
-        <section class="blueprint-container">
 
-            <!-- Blueprint atmosphere -->
-            <div class="bp-glow bp-glow-1"></div>
-            <div class="bp-glow bp-glow-2"></div>
-
-            <!-- Technical corner labels -->
-            <div class="technical-label label-top-left">
-                FIELD NOTE / 01
+        <!-- ---------- 4. SYSTEMS GRID ---------- -->
+        <section class="home-systems">
+            <div class="home-systems-head">
+                <h2>The systems <b>I work with.</b></h2>
+                <p style="color: #012161;margin-top: auto;">Motion is the thread that connects everything I do — from
+                    human joints to reactor cores.</p>
             </div>
 
-            <div class="technical-label label-top-right">
-                MOTION SYSTEMS<br>
-                ENGINEERING STUDY
-            </div>
+            <div class="home-systems-grid">
 
-            <div class="technical-label label-bottom-left">
-                K · KV / 2026
-            </div>
+                <!-- =========================================================
+     HOVER IMAGE ZOOM PREVIEW
+========================================================= -->
 
-            <div class="technical-label label-bottom-right">
-                SCALE : N.T.S.
-            </div>
+                <div class="home-image-preview" id="homeImagePreview">
 
-
-            <div class="blueprint-stage">
-
-                <!-- ==============================
-             LEFT EDITORIAL AREA
-        =============================== -->
-
-                <aside class="sidebar">
-
-                    <div class="eyebrow-wrap">
-                        <span class="eyebrow" style="color: var(--bp-blue);">
-                            ENGINEERING FIELD NOTES
-                        </span>
+                    <div class="home-image-preview-image">
+                        <img id="homePreviewImage" src="" alt="">
                     </div>
 
-                    <h1 class="main-headline">
-                        ENGINEERING
-                        <span>SYSTEMS</span>
-                        THAT MOVE PEOPLE,
-                        <span>POWER THE WORLD</span>
-                        AND SHAPE THE FUTURE.
-                    </h1>
+                    <div class="home-image-preview-details">
 
-
-                    <div class="headline-rule"></div>
-
-                    <div class="sidebar-meta">
-
-                        <span>
-                            HUMAN
-                        </span>
-
-                        <span>×</span>
-
-                        <span>
-                            MACHINE
-                        </span>
-
-                        <span>×</span>
-
-                        <span>
-                            INTELLIGENCE
-                        </span>
-
-                    </div>
-
-                </aside>
-
-
-
-                <!-- ==============================
-             CENTRAL 3D MOTION HUB
-        =============================== -->
-
-                <div class="motion-hub">
-                    <div class="hub-orbit orbit-1"></div>
-                    <div class="hub-orbit orbit-2"></div>
-                    <div class="hub-circle">
-                        <div class="hub-inner">
-                            <span class="hub-kicker">
-                                CORE SYSTEM
-                            </span>
-                            <h2>
-                                MOTION
-                            </h2>
-                            <div class="hub-line"></div>
-                            <p>
-                                is the thread that connects
-                                everything I do.
-                            </p>
-                            <span class="hub-coordinates">
-                                X / Y / Z
-                            </span>
+                        <div class="home-image-preview-number" id="homePreviewNumber">
+                            01
                         </div>
-                    </div>
-                </div>
 
-                <!-- ==============================
-             NODE 01
-             HUMAN MOBILITY
-        =============================== -->
-
-                <article class="node n1">
-
-                    <div class="node-number">
-                        01
-                    </div>
-                    <div class="node-image-wrap">
-
-                        <div class="node-image-glow"></div>
-
-                        <img src="assets/drawing/knee.png" alt="Human Mobility">
-
-                        <span class="image-corner corner-tl"></span>
-                        <span class="image-corner corner-br"></span>
-
-                    </div>
-                    <div class="txt">
-                        <span class="node-category">
+                        <div class="home-image-preview-category" id="homePreviewCategory">
                             HUMAN / BIOMECHANICS
-                        </span>
+                        </div>
 
-                        <h3>
-                            HUMAN MOBILITY
-                        </h3>
+                        <div class="home-image-preview-title" id="homePreviewTitle">
+                            Human Mobility
+                        </div>
 
-                        <p>
-                            Understanding the body
-                            to restore movement.
-                        </p>
-
-                        <span class="node-action">
-                            EXPLORE →
-                        </span>
+                        <div class="home-image-preview-description" id="homePreviewDescription">
+                            Understanding the body to restore movement.
+                        </div>
 
                     </div>
-
-                </article>
-
-
-
-                <!-- ==============================
-             NODE 02
-             ENERGY
-        =============================== -->
-
-                <article class="node n2">
-
-                    <div class="node-number">
-                        02
-                    </div>
-
-
-                    <div class="node-image-wrap">
-
-                        <div class="node-image-glow"></div>
-
-                        <img src="assets/drawing/reactor.png" alt="Energy Systems">
-
-                        <span class="image-corner corner-tl"></span>
-                        <span class="image-corner corner-br"></span>
-
-                    </div>
-
-
-                    <div class="txt">
-
-                        <span class="node-category">
-                            ENERGY / SYSTEMS
-                        </span>
-
-                        <h3>
-                            ENERGY SYSTEMS
-                        </h3>
-
-                        <p>
-                            Engineering sustainable
-                            energy for the future.
-                        </p>
-
-                        <span class="node-action">
-                            EXPLORE →
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ==============================
-             NODE 03
-             MATERIALS
-        =============================== -->
-
-                <article class="node n3">
-
-                    <div class="node-number">
-                        03
-                    </div>
-
-
-                    <div class="node-image-wrap">
-
-                        <div class="node-image-glow"></div>
-
-                        <img src="assets/drawing/materials.png" alt="Materials for Mobility">
-
-                        <span class="image-corner corner-tl"></span>
-                        <span class="image-corner corner-br"></span>
-
-                    </div>
-
-
-                    <div class="txt">
-
-                        <span class="node-category">
-                            MATERIALS / MOBILITY
-                        </span>
-
-                        <h3>
-                            MATERIALS FOR MOBILITY
-                        </h3>
-
-                        <p>
-                            Advanced composites for
-                            lighter vehicles.
-                        </p>
-
-                        <span class="node-action">
-                            EXPLORE →
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ==============================
-             NODE 04
-             VEHICLE
-        =============================== -->
-
-                <article class="node n4">
-
-                    <div class="node-number">
-                        04
-                    </div>
-
-
-                    <div class="node-image-wrap">
-
-                        <div class="node-image-glow"></div>
-
-                        <img src="assets/drawing/chassis.png" alt="Vehicle Mobility">
-
-                        <span class="image-corner corner-tl"></span>
-                        <span class="image-corner corner-br"></span>
-
-                    </div>
-
-
-                    <div class="txt">
-
-                        <span class="node-category">
-                            AUTOMOTIVE / MECHANICAL
-                        </span>
-
-                        <h3>
-                            VEHICLE MOBILITY
-                        </h3>
-
-                        <p>
-                            Designing systems that
-                            move people safely.
-                        </p>
-
-                        <span class="node-action">
-                            EXPLORE →
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ==============================
-             NODE 05
-             NATURE
-        =============================== -->
-
-                <article class="node n5">
-
-                    <div class="node-number">
-                        05
-                    </div>
-
-
-                    <div class="node-image-wrap">
-
-                        <div class="node-image-glow"></div>
-
-                        <img src="assets/drawing/nature.png" alt="Nature Inspired Engineering">
-
-                        <span class="image-corner corner-tl"></span>
-                        <span class="image-corner corner-br"></span>
-
-                    </div>
-
-
-                    <div class="txt">
-
-                        <span class="node-category">
-                            BIOMIMICRY / DESIGN
-                        </span>
-
-                        <h3>
-                            NATURE-INSPIRED
-                        </h3>
-
-                        <p>
-                            Learning from nature's
-                            designs to solve problems.
-                        </p>
-
-                        <span class="node-action">
-                            EXPLORE →
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ==============================
-             NODE 06
-             INTELLIGENCE
-        =============================== -->
-
-                <article class="node n6">
-
-                    <div class="node-number">
-                        06
-                    </div>
-
-
-                    <div class="node-image-wrap">
-
-                        <div class="node-image-glow"></div>
-
-                        <img src="assets/drawing/chip.png" alt="Intelligent Systems">
-
-                        <span class="image-corner corner-tl"></span>
-                        <span class="image-corner corner-br"></span>
-
-                    </div>
-
-
-                    <div class="txt">
-
-                        <span class="node-category">
-                            AI / SENSORS / DATA
-                        </span>
-
-                        <h3>
-                            INTELLIGENT SYSTEMS
-                        </h3>
-
-                        <p>
-                            Sensors, data and code
-                            for complex motion.
-                        </p>
-
-                        <span class="node-action">
-                            EXPLORE →
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ==============================
-             NODE 07
-             Sports Engineering
-        =============================== -->
-
-                <article class="node n7">
-
-                    <div class="node-number">
-                        07
-                    </div>
-
-
-                    <div class="node-image-wrap">
-
-                        <div class="node-image-glow"></div>
-
-                        <img src="assets/drawing/sport.png" alt="Sports Engineering">
-
-                        <span class="image-corner corner-tl"></span>
-                        <span class="image-corner corner-br"></span>
-
-                    </div>
-
-
-                    <div class="txt">
-
-                        <span class="node-category">
-                            Cricket / athletics / performance
-                        </span>
-
-                        <h3>
-                            SPORTS ENGINEERING
-                        </h3>
-
-                        <p>
-                            Engineering motion for
-                            athletes and performance.
-                        </p>
-
-                        <span class="node-action">
-                            EXPLORE →
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- ==============================
-             FLOATING TECH PARTICLES
-        =============================== -->
-
-                <span class="tech-dot dot-1"></span>
-                <span class="tech-dot dot-2"></span>
-                <span class="tech-dot dot-3"></span>
-                <span class="tech-dot dot-4"></span>
-
-            </div>
-
-        </section>
-        <section class="foundation" id="foundation">
-
-            <div class="container">
-
-                <!-- =========================================
-             SECTION INTRO
-             ========================================= -->
-
-                <div class="section-intro reveal">
-
-                    <div>
-
-                        <h2>
-                            Choose a<br>
-                            Field Note.
-                        </h2>
-
-                    </div>
-
-                    <p>
-                        Research, builds, academic credentials,
-                        internships, impact, and honors are separated
-                        into focused engineering field notes.
-
-                        <br><br>
-
-                        Select a module to explore the complete source
-                        content.
-                    </p>
 
                 </div>
 
-
-                <!-- =========================================
-             SIX MODULES
-             ========================================= -->
-
-                <div class="six-grid">
-
-
-                    <!-- =====================================
-                 01 — RESEARCH
-                 ===================================== -->
-
-                    <a class="topic-card reveal" href="research.html">
-
-                        <div class="card-bg-drawing">
-
-                            <img src="assets/drawing/materials.png" alt="">
-
-                        </div>
-
-
-                        <div class="card-content">
-
-                            <div class="topic-num">
-                                01 · RESEARCH
-                            </div>
-
-
-                            <div class="topic-icon" style="padding:10px;">
-                                <img src="assets/icon/research.png" alt="Research">
-                            </div>
-
-                            <h3>
-                                Research<br>
-                                Paper
-                            </h3>
-
-
-                            <p>
-                                Published and ongoing research across
-                                energy, materials, human performance,
-                                and engineering systems.
-                            </p>
-
-
-                            <span class="topic-link">
-                                Analyze Source →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-
-                    <!-- =====================================
-                 02 — PROJECTS
-                 ===================================== -->
-
-                    <a class="topic-card reveal" href="projects.html">
-
-                        <div class="card-bg-drawing">
-
-                            <img src="assets/drawing/projects.png" alt="">
-
-                        </div>
-
-
-                        <div class="card-content">
-
-                            <div class="topic-num">
-                                02 · HANDS-ON
-                            </div>
-
-
-
-                            <div class="topic-icon" style="padding:10px;">
-                                <img src="assets/icon/projects.png" alt="Projects">
-                            </div>
-
-                            <h3>
-                                Technical<br>
-                                Builds
-                            </h3>
-
-
-                            <p>
-                                Mechanical, embedded, AI,
-                                sports-engineering and
-                                experimental hardware builds.
-                            </p>
-
-
-                            <span class="topic-link">
-                                View Projects →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-                    <!-- =====================================
-                 03 — ACADEMICS
-                 ===================================== -->
-
-                    <a class="topic-card reveal" href="academics.html">
-
-                        <div class="card-bg-drawing">
-
-                            <img src="assets/drawing/academics.png" alt="">
-
-                        </div>
-
-
-                        <div class="card-content">
-
-                            <div class="topic-num">
-                                03 · ACADEMICS
-                            </div>
-
-
-                            <div class="topic-icon" style="padding:10px;">
-                                <img src="assets/icon/academics.png" alt="Academics">
-                            </div>
-
-
-                            <h3>
-                                Academic<br>
-                                Credentials
-                            </h3>
-
-
-                            <p>
-                                IB, IGCSE results, technical
-                                certifications and university-level
-                                learning.
-                            </p>
-
-
-                            <span class="topic-link">
-                                Verify Stats →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-                    <!-- =====================================
-                 04 — INTERNSHIPS
-                 ===================================== -->
-
-                    <a class="topic-card reveal" href="internships.html">
-
-                        <div class="card-bg-drawing">
-
-                            <img src="assets/drawing/internship.png" alt="">
-
-                        </div>
-
-
-                        <div class="card-content">
-
-                            <div class="topic-num">
-                                04 · INTERNSHIPS
-                            </div>
-
-
-                            <div class="topic-icon" style="padding:10px;">
-                                <img src="assets/icon/internship.png" alt="Internships">
-                            </div>
-
-
-                            <h3>
-                                Industry<br>
-                                Experience
-                            </h3>
-
-
-                            <p>
-                                Research and industry exposure,
-                                engineering environments and
-                                practical experience.
-                            </p>
-
-
-                            <span class="topic-link">
-                                Explore Work →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-
-                    <!-- =====================================
-                 05 — IMPACT
-                 ===================================== -->
-
-                    <a class="topic-card reveal" href="impact.html">
-
-                        <div class="card-bg-drawing">
-
-                            <img src="assets/drawing/impact.png" alt="">
-
-                        </div>
-
-
-                        <div class="card-content">
-
-                            <div class="topic-num">
-                                05 · IMPACT
-                            </div>
-
-
-                            <div class="topic-icon" style="padding:10px;">
-                                <img src="assets/icon/impact.png" alt="Impact">
-                            </div>
-
-
-                            <h3>
-                                Social<br>
-                                Impact
-                            </h3>
-
-
-                            <p>
-                                Projects designed to create meaningful
-                                outcomes for communities, students
-                                and real-world users.
-                            </p>
-
-
-                            <span class="topic-link">
-                                View Mission →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-
-                    <!-- =====================================
-                 06 — AWARDS
-                 ===================================== -->
-
-                    <a class="topic-card reveal" href="awards.html">
-
-                        <div class="card-bg-drawing">
-
-                            <img src="assets/drawing/award.png" alt="">
-
-                        </div>
-
-
-                        <div class="card-content">
-
-                            <div class="topic-num">
-                                06 · RECOGNITION
-                            </div>
-
-
-                            <div class="topic-icon" style="padding:10px;">
-                                <img src="assets/icon/award.png" alt="Awards">
-                            </div>
-
-
-                            <h3>
-                                Honors &<br>
-                                Awards
-                            </h3>
-
-
-                            <p>
-                                Olympiads, scholarships, competitions
-                                and academic and extracurricular
-                                recognition.
-                            </p>
-
-
-                            <span class="topic-link">
-                                View Awards →
-                            </span>
-
-                        </div>
-
-                    </a>
-
-
-                </div>
+                <a class="home-card" href="internships.html">
+                    <span class="home-card-num">01</span>
+                    <div class="home-card-img"><img src="assets/drawing/knee.png" alt="Human Mobility"></div>
+                    <span class="home-card-cat">Human / Biomechanics</span>
+                    <h3>Human Mobility</h3>
+                    <p>Understanding the body to restore movement.</p>
+                </a>
+
+                <a class="home-card" href="research.html">
+                    <span class="home-card-num">02</span>
+                    <div class="home-card-img"><img src="assets/drawing/reactor.png" alt="Energy Systems"></div>
+                    <span class="home-card-cat">Energy / Systems</span>
+                    <h3>Energy Systems</h3>
+                    <p>Engineering sustainable energy for the future.</p>
+                </a>
+
+                <a class="home-card" href="research.html">
+                    <span class="home-card-num">03</span>
+                    <div class="home-card-img"><img src="assets/drawing/materials.png" alt="Materials for Mobility">
+                    </div>
+                    <span class="home-card-cat">Materials / Mobility</span>
+                    <h3>Materials for Mobility</h3>
+                    <p>Advanced composites for lighter vehicles.</p>
+                </a>
+
+                <a class="home-card" href="internships.html">
+                    <span class="home-card-num">04</span>
+                    <div class="home-card-img"><img src="assets/drawing/chassis.png" alt="Vehicle Mobility"></div>
+                    <span class="home-card-cat">Automotive / Mechanical</span>
+                    <h3>Vehicle Mobility</h3>
+                    <p>Designing systems that move people safely.</p>
+                </a>
+
+                <a class="home-card" href="projects.html">
+                    <span class="home-card-num">05</span>
+                    <div class="home-card-img"><img src="assets/drawing/nature.png" alt="Nature-Inspired Engineering">
+                    </div>
+                    <span class="home-card-cat">Biomimicry / Design</span>
+                    <h3>Nature-Inspired</h3>
+                    <p>Learning from nature's designs to solve problems.</p>
+                </a>
+
+                <a class="home-card" href="projects.html">
+                    <span class="home-card-num">06</span>
+                    <div class="home-card-img"><img src="assets/drawing/chip.png" alt="Intelligent Systems"></div>
+                    <span class="home-card-cat">AI / Sensors / Data</span>
+                    <h3>Intelligent Systems</h3>
+                    <p>Sensors, data and code for complex motion.</p>
+                </a>
+
+                <a class="home-card" href="interests.html">
+                    <span class="home-card-num">07</span>
+                    <div class="home-card-img"><img src="assets/drawing/sport.png" alt="Sports Engineering"></div>
+                    <span class="home-card-cat">Cricket / Athletics</span>
+                    <h3>Sports Engineering</h3>
+                    <p style="color: #000;">Engineering motion for athletes and performance.</p>
+                </a>
 
             </div>
-
         </section>
-    </main>
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-title">Krshay Venkatesan</div>
-                <div class="footer-meta">Engineering · Motion · Systems</div>
-            </div>
-            <div class="footer-links"><a href="index.html">Home</a><a href="research.html">Research</a><a
-                    href="projects.html">Projects</a><a href="academics.html">Academic Credentials</a><a
-                    href="internships.html">Internships</a><a href="impact.html">Impact</a><a href="awards.html">Honors
-                    & Awards</a></div>
-        </div>
-    </footer>
-    <script>const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('show') }), { threshold: .08 }); document.querySelectorAll('.reveal').forEach(e => io.observe(e));</script>
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const cards = document.querySelectorAll(".home-card");
+
+            const preview = document.getElementById("homeImagePreview");
+            const previewImage = document.getElementById("homePreviewImage");
+            const previewNumber = document.getElementById("homePreviewNumber");
+            const previewCategory = document.getElementById("homePreviewCategory");
+            const previewTitle = document.getElementById("homePreviewTitle");
+            const previewDescription = document.getElementById("homePreviewDescription");
+
+
+            cards.forEach((card) => {
+
+                const image = card.querySelector("img");
+                const number = card.querySelector(".home-card-num");
+                const category = card.querySelector(".home-card-cat");
+                const title = card.querySelector("h3");
+                const description = card.querySelector("p");
+
+
+                card.addEventListener("mouseenter", () => {
+
+                    if (!image) return;
+
+                    /* Image */
+                    previewImage.src = image.src;
+                    previewImage.alt = image.alt || title?.textContent || "Preview";
+
+
+                    /* Details */
+                    previewNumber.textContent =
+                        number?.textContent.trim() || "";
+
+                    previewCategory.textContent =
+                        category?.textContent.trim() || "";
+
+                    previewTitle.textContent =
+                        title?.textContent.trim() || "";
+
+                    previewDescription.textContent =
+                        description?.textContent.trim() || "";
+
+
+                    /* Show */
+                    preview.classList.add("active");
+
+                });
+
+
+                card.addEventListener("mouseleave", () => {
+
+                    preview.classList.remove("active");
+
+                });
+
+            });
+
+        });
+    </script>
 </body>
 
 </html>
