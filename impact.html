@@ -285,6 +285,61 @@
             transition: .2s ease;
         }
         .impact-link:hover { background: var(--blue); color: #fff; }
+.view-hero {
+            flex: 0 0 125px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 130px;
+            gap: 30px;
+
+            padding:
+                16px clamp(18px, 2.8vw, 42px);
+
+background:
+                radial-gradient(
+                    circle at 78% 25%,
+                    rgba(39, 96, 205, 0.32),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #07101c 0%,
+                    #0a1728 55%,
+                    #101f37 100%
+                );
+
+
+            border-bottom: 1px solid var(--line);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .view-hero::before {
+            content: "IMPACT";
+
+            position: absolute;
+
+            right: 3%;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-family: var(--display);
+
+            font-size: clamp(4rem, 9vw, 9rem);
+
+            font-weight: 700;
+
+            letter-spacing: -.07em;
+
+            color: rgba(255, 255, 255, .025);
+
+            pointer-events: none;
+        }
 
         /* Content-sized cards: removes the large blank space inside both articles */
         @media (min-width: 861px) {
@@ -315,7 +370,7 @@
 
         <div class="view-hero">
             <div class="view-hero-text">
-                <span class="view-kicker">05 · Impact</span>
+                <span class="view-kicker">05 ·Leadership and Community Impact</span>
                 <h1>Build for someone else.</h1>
                 <p>Engineering that matters — for patients, students, communities and the people who use it.</p>
             </div>
