@@ -266,7 +266,8 @@
 
         .research-status {
             font-family: var(--mono);
-            font-size: 7px;
+            font-size: 10px;
+            font-weight: 700;
             letter-spacing: .08em;
             text-transform: uppercase;
             padding: 2px 7px;
@@ -365,18 +366,14 @@
             padding:
                 16px clamp(18px, 2.8vw, 42px);
 
-background:
-                radial-gradient(
-                    circle at 78% 25%,
+            background:
+                radial-gradient(circle at 78% 25%,
                     rgba(39, 96, 205, 0.32),
-                    transparent 28%
-                ),
-                linear-gradient(
-                    135deg,
+                    transparent 28%),
+                linear-gradient(135deg,
                     #07101c 0%,
                     #0a1728 55%,
-                    #101f37 100%
-                );
+                    #101f37 100%);
 
 
             border-bottom: 1px solid var(--line);
@@ -407,6 +404,29 @@ background:
             color: rgba(255, 255, 255, .025);
 
             pointer-events: none;
+        }
+
+        .research-thumb {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .research-thumb>img:first-child {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .research-logo {
+            position: absolute;
+            max-width: 70px ;
+            max-height: 70px ;
+            z-index: 10;
+            background: #f8fbfd;
+            padding: 3px;
+            border-radius: 4px;
+            object-fit: contain;
         }
 
         @media (max-width: 860px) {
@@ -444,6 +464,29 @@ background:
                 align-items: flex-start;
             }
         }
+        .research-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.research-card {
+    width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+    .research-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 </head>
 
@@ -465,39 +508,62 @@ background:
             <div class="research-grid">
 
                 <article class="research-card">
-                    <div class="research-thumb"><img src="assets/drawing/reactor.png"
-                            alt="Molten Salt Reactor schematic"></div>
+                    <div class="research-thumb">
+                        <img src="assets/logo/Princeton.png" alt="Logo" class="research-logo">
+                        <img src="assets/drawing/reactor.png" alt="Molten Salt Reactor schematic">
+
+                    </div>
                     <div class="research-meta"><span class="research-year">2024–25</span><span
                             class="research-status">Published</span></div>
-                    <br>
                     <div class="research-venue">Princeton Journal of Interdisciplinary Research</div>
                     <h3>Molten Salt Reactor Feasibility for India's 2070 Net-Zero Goal</h3>
                     <p>Technical and policy feasibility of molten salt reactors as a pathway to India's net-zero
                         commitment, combining nuclear analysis with energy policy frameworks.</p>
                     <div class="research-mentor">Mentor / Dr. George Anwar · UC Berkeley</div>
                 </article>
-
+                <!-- PROJECT SUMMARY -->
                 <article class="research-card">
-                    <div class="research-thumb"><img src="assets/drawing/materials.png"
-                            alt="Composite materials engineering"></div>
-                    <div class="research-meta"><span class="research-year">2025–26</span><span
-                            class="research-status">Published</span></div>
 
-                    <br>
-                    <div class="research-venue">IEEE I2ITCON 2026</div>
-                    <h3>Composite Materials Adoption Study — PLS-SEM Analysis</h3>
-                    <p>Applied PLS-SEM multivariate regression to model adoption of composite materials in aerospace and
-                        automotive industries.</p>
-                    <div class="research-mentor">Published / IEEE I2ITCON 2026 Presentation</div>
+                    <div class="research-thumb">
+                        <img src="assets/drawing/knee-1.png" alt="Project Summary" class="research-logo"
+                            style="max-width: 55px; max-height: 55px;">
+
+                        <img src="assets/drawing/knee_1.png" alt="Engineering project summary">
+                    </div>
+
+                    <div class="research-meta">
+                        <span class="research-year">2024–26</span>
+                        <span class="research-status">Published</span>
+                    </div>
+
+
+                    <div class="research-venue">
+                        Engineering Projects
+                    </div>
+
+                    <h3>
+                        Sensor-Based ACL Rehab Knee Sleeve
+                    </h3>
+
+                    <p>
+                        A collection of engineering projects focused on motion,
+                        embedded systems, mechanical design, vibration analysis,
+                        simulation, and data-driven engineering solutions.
+                    </p>
+
+                    <div class="research-mentor">
+                        Engineering · Motion · Systems
+                    </div>
+
                 </article>
 
                 <article class="research-card">
-                    <div class="research-thumb"><img src="assets/drawing/nature_1.jpg"
-                            alt="Mechanical tremor dampening spoon"></div>
+                    <div class="research-thumb">
+                        <img src="assets/logo/OIP.webp" alt="Logo" class="research-logo" style="max-width: 55px; max-height: 55px;">
+                        <img src="assets/drawing/nature_1.jpg" alt="Mechanical tremor dampening spoon">
+                    </div>
                     <div class="research-meta"><span class="research-year">2025–26</span><span
-                            class="research-status">Published</span></div>
-                    <br>
-                    <div class="research-venue">Oxford Journal of Student Scholarship</div>
+                            class="research-status">Published</span></div>                    <div class="research-venue">Oxford Journal of Student Scholarship</div>
                     <h3>Mechanical Tremor-Dampening Spoon for Parkinson's Disease</h3>
                     <p>Designed and structurally analysed a mechanical spoon to reduce eating tremors, using FEA to
                         validate the design under simulated loading.</p>
@@ -505,16 +571,34 @@ background:
                 </article>
 
                 <article class="research-card">
-                    <div class="research-thumb"><img src="assets/drawing/chassis_1.png"
-                            alt="Vehicle chassis vibration analysis"></div>
-                    <div class="research-meta"><span class="research-year">Ongoing</span><span
-                            class="research-status ongoing">Ongoing</span></div>
-                    <br>
-                    <div class="research-venue">Rambal Pvt. Ltd. · PhD Mentor</div>
-                    <h3>Chassis Vibration Analysis in Emergency Medical Vehicles</h3>
+                    <div class="research-thumb">
+                        <img src="assets/logo/IEEE.jpg" alt="Logo" class="research-logo" style="max-width: 50px; max-height: 50px;">
+
+                        <img src="assets/drawing/materials.png" alt="Composite materials engineering" style="margin-top: 10%;">
+                    </div>
+                    <div class="research-meta"><span class="research-year">2025–26</span><span
+                            class="research-status">Published</span></div>
+
+                    <div class="research-venue">IEEE I2ITCON 2026</div>
+                    <h3>Composite Materials Adoption Study — PLS-SEM Analysis</h3>
+                    <p>Applied PLS-SEM multivariate regression to model adoption of composite materials in aerospace and
+                        automotive industries.</p>
+                    <div class="research-mentor">Published / IEEE I2ITCON 2026 Presentation</div>
+                </article>
+
+
+                <article class="research-card">
+                    <div class="research-thumb">
+                        <img src="assets/logo/Sae-International-Logo-Vector.jpg" alt="Logo" class="research-logo" style="max-width: 55px; max-height: 55px;">
+                        <img src="assets/drawing/chassis_1.png" alt="Vehicle chassis vibration analysis">
+                    </div>
+                    <div class="research-meta"><span class="research-year">2024–26</span><span
+                            class="research-status ongoing">Submitted</span></div>
+                    <div class="research-venue">SAE International Journal of Vehicle Systems</div>
+                    <h3>Experimental Evaluation of Vibration Attenuation Using a Frequency-Adaptive Damper in a Large Van</h3>
                     <p>Analysing vibration profiles transmitted through emergency vehicle systems to understand stress
                         placed on patients.</p>
-                    <div class="research-mentor">Internship / Rambal Pvt. Ltd. · Chennai</div>
+                    <div class="research-mentor">Mentor / Dr. Anand Raj . VIT</div>
                 </article>
 
             </div>
