@@ -1013,7 +1013,7 @@
         .igcse-summary::before {
 
             content:
-                "CAMBRIDGE IGCSE";
+                "";
 
             font-family:
                 var(--mono);
@@ -1236,7 +1236,19 @@
             min-height: 0;
             overflow: hidden;
         }
+.coursework-card {
+    position: relative;
+}
 
+.coursework-logo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    z-index: 5;
+}
         /* =====================================================
            TABLET
         ===================================================== */
@@ -1468,7 +1480,112 @@
                     </div>
 
                 </article>
-                <!-- PRECALCULUS -->
+
+                <!-- CALCULUS BC -->
+
+                <article class="card ap-card reveal">
+                    <div class="ap-card-top">
+                        <span class="score-label">
+                            College Board
+                        </span>
+
+                    </div>
+                    <div class="ap-card-top">
+                        <div>
+
+                            <span class="ap-year" style="color: var(--orange);">
+                                2025 · AP
+                            </span>
+                            <h4>
+                                Calculus BC
+                            </h4>
+                        </div>
+                        <strong class="ap-score" style="font-size: 1.8rem;">
+                            5
+                        </strong>
+
+                    </div>
+                    <div class="ap-card-top">
+                        <div>
+
+                            <span class="ap-year" style="color: var(--orange);">
+                                2024 · AP
+                            </span>
+                            <h4>
+                                Computer Science A
+                            </h4>
+
+                        </div>
+
+                        <strong class="ap-score" style="font-size: 1.8rem;">
+                            5
+                        </strong>
+
+                    </div>
+
+                    <div class="score-footer" style="margin-top: 0px;">
+
+                        <span>
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/AP-Score Report + Award.pdf" target="_blank"
+                            style="margin-top: -5px;">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- IGCSE SUMMARY -->
+
+                <article class="coursework-card igcse-summary reveal">
+                    <span class="score-label" style="margin-bottom: -30px;">
+                        IGCSE
+                    </span>
+                    <div class="igcse-stat" style="margin-top: 15px;">
+
+                        <strong>
+                            9
+                        </strong>
+
+                        <span style="font-size: 8px; font-weight: 800;">
+                            A* Grades
+                        </span>
+
+                    </div>
+
+
+                    <div class="igcse-stat">
+
+                        <strong>
+                            Distinction
+                        </strong>
+
+                        <span style="font-size: 8px; font-weight: 800;">
+                            ICE Award Result
+                        </span>
+
+                    </div>
+
+                    <div class="score-footer" style="margin-top: -9%;">
+
+                        <span>
+                            Perfect score
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+
                 <article class="coursework-card reveal">
 
                     <div>
@@ -1476,7 +1593,67 @@
                         <div class="test-top" style="margin-top: 10px;">
 
                             <div>
+                                <span class="score-label">
+                                    College Board
+                                </span>
 
+                                <h3>
+                                    BI
+                                </h3>
+
+                            </div>
+
+                            <span class="score-year">
+                                2025
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-score">
+
+                            <strong class="counter" data-target="44">
+
+                                44
+
+                            </strong>
+
+                            <span>
+                                / 45
+                            </span>
+
+                        </div>
+
+
+                        <div class="percentile">
+                            98% of max
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-footer">
+
+                        <span>
+                            Perfect score
+                        </span>
+
+                        <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                            View ↗
+
+                        </a>
+
+                    </div>
+
+                </article>
+                <article class="coursework-card reveal">
+
+                    <div>
+
+                        <div class="test-top" style="margin-top: 10px;">
+
+                            <div>
                                 <span class="score-label">
                                     College Board
                                 </span>
@@ -1532,153 +1709,6 @@
 
                 </article>
 
-                <!-- CALCULUS BC -->
-
-                <article class="card ap-card reveal">
-
-                    <div class="ap-card-top">
-                        <div>
-
-                            <span class="ap-year" style="color: var(--orange);">
-                                2025 · AP
-                            </span>
-                            <h4>
-                                Calculus BC
-                            </h4>
-                        </div>
-                        <strong class="ap-score" style="font-size: 1.8rem;">
-                            5
-                        </strong>
-
-                    </div>
-                    <div class="ap-card-top">
-                        <div>
-
-                            <span class="ap-year" style="color: var(--orange);">
-                                2024 · AP
-                            </span>
-                            <h4>
-                                Computer Science A
-                            </h4>
-
-                        </div>
-
-                        <strong class="ap-score" style="font-size: 1.8rem;">
-                            5
-                        </strong>
-
-                    </div>
-                    <div class="ap-card-top">
-                        <div>
-
-                            <span class="ap-year" style="color: var(--orange);">
-                                2024 · AP
-                            </span>
-                            <h4>
-                                Precalculus
-                            </h4>
-                        </div>
-                        <strong class="ap-score" style="font-size: 1.8rem;">
-                            4
-                        </strong>
-
-                    </div>
-                    <div class="score-footer" style="margin-top: 0px;">
-
-                        <span>
-                        </span>
-
-                        <a class="document-btn" href="certificate/academic/AP-Score Report + Award.pdf" target="_blank"
-                            style="margin-top: -5px;">
-
-                            View ↗
-
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- IGCSE SUMMARY -->
-
-                <article class="coursework-card igcse-summary reveal">
-
-                    <div class="igcse-stat">
-
-                        <strong>
-                            9
-                        </strong>
-
-                        <span>
-                            A* Grades
-                        </span>
-
-                    </div>
-
-
-                    <div class="igcse-stat">
-
-                        <strong>
-                            Distinction
-                        </strong>
-
-                        <span>
-                            ICE Award Result
-                        </span>
-
-                    </div>
-
-
-                    <a class="document-btn" href="certificate/academic/IGCSE-9 AStars Transcript.pdf" target="_blank">
-
-                        Documents ↗
-
-                    </a>
-
-                </article>
-                <!-- COMPUTER SCIENCE -->
-
-                <article class="coursework-card reveal">
-
-                    <small>
-                        IGCSE
-                    </small>
-
-                    <h4>
-                        Additional Mathematics
-                    </h4>
-
-                    <div class="coursework-score">
-
-                        <strong>
-                            99%
-                        </strong>
-
-                        <span>
-                            A*
-                        </span>
-
-                    </div>
-
-                    <div class="coursework-bar" data-width="99%">
-
-                        <span></span>
-
-                    </div>
-
-
-
-                </article>
-
-
-
-
-
-
-
-
                 <!-- =====================================================
                      LOWER BOARD
                 ===================================================== -->
@@ -1686,284 +1716,144 @@
                 <div class="ap-grid">
 
                     <!-- INTERNATIONAL MATHEMATICS -->
+                    <article class="coursework-card reveal">
+                        <img src="assets/logo/stanford-university-logo.png" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                               Linear Algebra 
+                            </small>
+
+                            <h4>
+                                Stanford University Online
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    <article class="coursework-card reveal">
+                        <img src="assets/logo/Georgia-Tech-Logo.png" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Engineering Mechanics
+                            </small>
+
+                            <h4>
+                                Georgia Tech
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    <article class="coursework-card reveal">
+                        <img src="assets/logo/University-Of-Michigan-Emblem.png" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Thermodynamics
+                            </small>
+
+                            <h4>
+                                University of Michigan
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
+                    <article class="coursework-card reveal">
+                        <img src="assets/internship/iit_logo.jpg" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Aerospace   
+                            </small>
+
+                            <h4>
+                                IIT Madras
+                            </h4>
+
+                            <div class="score-footer">
+
+                                <span>
+
+                                </span>
+
+                                <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
+
+                                    View ↗
+
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </article>
 
                     <article class="coursework-card reveal">
+                        <img src="assets/logo/udemy.jpg" alt="Logo" class="coursework-logo">
+                        <div style="margin-top: 20%;">
+                            <small style="font-size: 8px; font-weight: 800;">
+                                Python Bootcamp 
+                            </small>
 
-                        <small>
-                            IGCSE
-                        </small>
+                            <h4>
+                                Udemy
+                            </h4>
 
-                        <h4>
-                            Cambridge International Mathematics
-                        </h4>
+                            <div class="score-footer">
 
-                        <div class="coursework-score">
+                                <span>
 
-                            <strong>
-                                97%
-                            </strong>
+                                </span>
 
-                            <span>
-                                A*
-                            </span>
+                                <a class="document-btn" href="certificate/academic/PSAT-2024-1440.pdf" target="_blank">
 
-                        </div>
+                                    View ↗
 
-                        <div class="coursework-bar" data-width="97%">
-
-                            <span></span>
+                                </a>
+                            </div>
 
                         </div>
 
                     </article>
 
-                    <!-- DESIGN -->
-
-                    <article class="coursework-card reveal">
-
-                        <small>
-                            IGCSE
-                        </small>
-
-                        <h4>
-                            Design &amp; Technology
-                        </h4>
-
-                        <div class="coursework-score">
-
-                            <strong>
-                                93%
-                            </strong>
-
-                            <span>
-                                A*
-                            </span>
-
-                        </div>
-
-                        <div class="coursework-bar" data-width="93%">
-
-                            <span></span>
-
-                        </div>
-
-                    </article>
-
-
-
-
-
-
-
-
-
-                    <!-- ECONOMICS -->
-
-                    <article class="coursework-card reveal">
-
-                        <small>
-                            IGCSE
-                        </small>
-
-                        <h4>
-                            Economics
-                        </h4>
-
-                        <div class="coursework-score">
-
-                            <strong>
-                                96%
-                            </strong>
-
-                            <span>
-                                A*
-                            </span>
-
-                        </div>
-
-                        <div class="coursework-bar" data-width="96%">
-
-                            <span></span>
-
-                        </div>
-
-                    </article>
-                    <!-- HISTORY -->
-
-                    <article class="coursework-card reveal">
-
-                        <small>
-                            IGCSE
-                        </small>
-
-                        <h4>
-                            History
-                        </h4>
-
-                        <div class="coursework-score">
-
-                            <strong>
-                                95%
-                            </strong>
-
-                            <span>
-                                A*
-                            </span>
-
-                        </div>
-
-                        <div class="coursework-bar" data-width="95%">
-
-                            <span></span>
-
-                        </div>
-
-                    </article>
-
-
-
-
-
-
-
-                    <!-- SCIENCE -->
-
-                    <article class="coursework-card reveal">
-
-                        <small>
-                            IGCSE · Double Award
-                        </small>
-
-                        <h4>
-                            Co-ordinated Sciences
-                        </h4>
-
-                        <div class="coursework-score">
-
-                            <strong>
-                                97%
-                            </strong>
-
-                            <span>
-                                A*
-                            </span>
-
-                        </div>
-
-                        <div class="coursework-bar" data-width="97%">
-
-                            <span></span>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- ADDITIONAL MATHEMATICS 
-
-                    <article class="coursework-card reveal">
-
-                        <small>
-                            IGCSE
-                        </small>
-
-                        <h4>
-                            Additional Mathematics
-                        </h4>
-
-                        <div class="coursework-score">
-
-                            <strong>
-                                99%
-                            </strong>
-
-                            <span>
-                                A*
-                            </span>
-
-                        </div>
-
-                        <div class="coursework-bar" data-width="99%">
-
-                            <span></span>
-
-                        </div>
-
-                    </article>
-
-
-
-
-
-                    <article class="coursework-card reveal">
-
-                        <small>
-                            IGCSE · 0549
-                        </small>
-
-                        <h4>
-                            Hindi as a Second Language
-                        </h4>
-
-                        <div class="coursework-score">
-
-                            <strong>
-                                92%
-                            </strong>
-
-                            <span>
-                                A*
-                            </span>
-
-                        </div>
-
-                        <div class="coursework-bar" data-width="92%">
-
-                            <span></span>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="coursework-card reveal">
-
-                        <small>
-                            IGCSE
-                        </small>
-
-                        <h4>
-                            First Language English
-                        </h4>
-
-                        <div class="coursework-score">
-
-                            <strong>
-                                96%
-                            </strong>
-
-                            <span>
-                                A*
-                            </span>
-
-                        </div>
-
-                        <div class="coursework-bar" data-width="96%">
-
-                            <span></span>
-
-                        </div>
-
-                    </article>
-                    <article class="card ap-card reveal">
-
-
-
-
-
-                    </article>
-                    -->
+                   
                 </div>
 
             </div>
